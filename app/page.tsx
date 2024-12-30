@@ -1,15 +1,90 @@
 import ScrollBackground from './components/ScrollBackground';
+import Link from 'next/link';
+import NavItem from './components/NavItem';
+import ProfileImage from './components/ProfileImage';
+import LoadingScreen from './components/LoadingScreen';
 
 export default function Home() {
   return (
     <>
+      <LoadingScreen />
       <ScrollBackground />
-      <div className="min-h-screen font-[family-name:var(--font-geist-sans)] relative">
+      <div className="min-h-screen font-mono relative animate-siteLoad">
         {/* Hero Section */}
-        <section id="hero" className="min-h-screen flex items-center justify-center">
-          <div className="container mx-auto px-4 text-center text-white">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">Your Name</h1>
-            <p className="text-xl md:text-2xl">Your Tagline Here</p>
+        <section id="hero" className="min-h-screen flex items-center">
+          <div className="container mx-auto px-6 flex justify-between items-center">
+            {/* Left Content */}
+            <div className="space-y-8">
+              {/* Welcome Text */}
+              <div>
+                <h2 className="text-yellow-300 text-2xl mb-2">Welcome! I&apos;m</h2>
+                <h1 className="text-white text-5xl font-bold">
+                  Tomas Santos Yciano.
+                </h1>
+              </div>
+
+              {/* Navigation Links */}
+              <nav className="space-y-4">
+                <NavItem
+                  title="MY STORY"
+                  subtitle="From the D.R. to the Big Apple, here's my journey."
+                  href="#story"
+                />
+
+                <NavItem
+                  title="PROJECTS"
+                  subtitle="Turning big ideas into bold projects."
+                  href="#projects"
+                />
+
+                <NavItem
+                  title="EXPERIENCE"
+                  subtitle="Learning, leading, and building along the way."
+                  href="#experience"
+                />
+
+                <NavItem
+                  title="EDUCATION"
+                  subtitle="Proudly learning and growing at St. John's University."
+                  href="#education"
+                />
+
+                <NavItem
+                  title="GALLERY"
+                  subtitle="Snapshots of my journey, one moment at a time."
+                  href="#gallery"
+                />
+              </nav>
+
+              {/* Social Links */}
+              <div className="pt-4">
+                <div className="text-white space-x-4 text-xl">
+                  <Link 
+                    href="mailto:tomassantos484@gmail.com" 
+                    className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                  >
+                    EMAIL
+                  </Link>
+                  <span>|</span>
+                  <Link 
+                    href="https://github.com/tomassantos484" 
+                    className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                  >
+                    GITHUB
+                  </Link>
+                  <span>|</span>
+                  <Link 
+                    href="https://www.linkedin.com/in/tjsy" 
+                    className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                  >
+                    LINKEDIN
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content - Profile Image */}
+            <ProfileImage />
           </div>
         </section>
 
