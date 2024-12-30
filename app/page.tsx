@@ -1,101 +1,95 @@
-import Image from "next/image";
+import ScrollBackground from './components/ScrollBackground';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <ScrollBackground />
+      <div className="min-h-screen font-[family-name:var(--font-geist-sans)] relative">
+        {/* Hero Section */}
+        <section id="hero" className="min-h-screen flex items-center justify-center">
+          <div className="container mx-auto px-4 text-center text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">Your Name</h1>
+            <p className="text-xl md:text-2xl">Your Tagline Here</p>
+          </div>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        {/* My Story Section */}
+        <section id="story" className="py-20 bg-transparent">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8 text-center text-white">My Story</h2>
+            <div className="max-w-3xl mx-auto">
+              <p className="text-gray-200">Your story content here...</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Skills Section */}
+        <section id="skills" className="py-20 bg-transparent">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8 text-center text-white">Skills</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {/* Add your skills items here */}
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section id="projects" className="py-20 bg-transparent">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8 text-center text-white">Projects</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Add your project cards here */}
+            </div>
+          </div>
+        </section>
+
+        {/* Experience Section */}
+        <section id="experience" className="py-20 bg-transparent">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8 text-center text-white">Experience</h2>
+            <div className="max-w-3xl mx-auto">
+              {/* Add your experience timeline here */}
+            </div>
+          </div>
+        </section>
+
+        {/* Education Section */}
+        <section id="education" className="py-20 bg-transparent">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8 text-center text-white">Education</h2>
+            <div className="max-w-3xl mx-auto">
+              {/* Add your education details here */}
+            </div>
+          </div>
+        </section>
+
+        {/* Gallery Section */}
+        <section id="gallery" className="py-20 bg-transparent">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8 text-center text-white">Gallery</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {/* Add your gallery images here */}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="py-20 bg-transparent">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8 text-center text-white">Contact Me</h2>
+            <div className="max-w-md mx-auto">
+              {/* Add your contact form or contact information here */}
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-6 bg-transparent border-t border-white/10">
+          <div className="container mx-auto px-4 text-center text-white">
+            <p>© {new Date().getFullYear()} Tomas Santos Yciano. All rights reserved.</p>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 }
