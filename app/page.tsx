@@ -79,6 +79,14 @@ export default function Home() {
                   >
                     LINKEDIN
                   </Link>
+                  <span>|</span>
+                  <a 
+                    href="/TSY_Resume_Sept2024_V5.pdf" 
+                    download="Tomas_Santos_Yciano_Resume.pdf"
+                    className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                  >
+                    RESUME
+                  </a>
                 </div>
               </div>
             </div>
