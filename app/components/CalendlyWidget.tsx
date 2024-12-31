@@ -1,38 +1,34 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Script from 'next/script';
 
-export default function CalendlyWidget() {
+function CalendlyWidgetInner() {
+  const [showWidget, setShowWidget] = useState(false);
+
   useEffect(() => {
-    const loadCalendly = () => {
-      // @ts-expect-error: Calendly is added to window by external script
-      if (window.Calendly) {
-        // @ts-expect-error: Calendly is loaded via external script
-        window.Calendly.initBadgeWidget({
-          url: 'https://calendly.com/tomassantos484/30min',
-          text: 'Schedule time with me!',
-          color: '#FFD700',
-          textColor: '#ffffff',
-          branding: undefined
-        });
-      }
-    };
+    const timer = setTimeout(() => {
+      setShowWidget(true);
+    }, 2000);
 
-    // Try to load immediately if Calendly is already available
-    loadCalendly();
-
-    // Also set up a listener for when the script loads
-    window.addEventListener('calendly:ready', loadCalendly);
-
-    return () => window.removeEventListener('calendly:ready', loadCalendly);
+    return () => clearTimeout(timer);
   }, []);
+
+  if (!showWidget) return null;
 
   return (
     <>
       <style jsx global>{`
         .calendly-badge-widget {
-          transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+          transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.5s ease !important;
+          opacity: 0;
+          animation: fadeIn 0.5s ease forwards 0.2s;
+        }
+        
+        @keyframes fadeIn {
+          to {
+            opacity: 1;
+          }
         }
         
         .calendly-badge-widget:hover {
@@ -53,8 +49,17 @@ export default function CalendlyWidget() {
         src="https://assets.calendly.com/assets/external/widget.js"
         strategy="afterInteractive"
         onLoad={() => {
-          const event = new Event('calendly:ready');
-          window.dispatchEvent(event);
+          // @ts-expect-error: Calendly is added to window by external script
+          if (window.Calendly) {
+            // @ts-expect-error: Calendly is loaded via external script
+            window.Calendly.initBadgeWidget({
+              url: 'https://calendly.com/tomassantos484/30min',
+              text: 'Schedule time with me!',
+              color: '#FFD700',
+              textColor: '#ffffff',
+              branding: undefined
+            });
+          }
         }}
       />
       <link
@@ -63,4 +68,8 @@ export default function CalendlyWidget() {
       />
     </>
   );
-} 
+}
+
+// Export as a dynamic component with SSR disabled
+import dynamic from 'next/dynamic';
+export default dynamic(() => Promise.resolve(CalendlyWidgetInner), { ssr: false }); 

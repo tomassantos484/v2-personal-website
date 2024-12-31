@@ -3,6 +3,7 @@ import Link from 'next/link';
 import NavItem from './components/NavItem';
 import ProfileImage from './components/ProfileImage';
 import LoadingScreen from './components/LoadingScreen';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -98,10 +99,45 @@ export default function Home() {
 
         {/* My Story Section */}
         <section id="story" className="py-20 bg-transparent">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-white">My Story</h2>
-            <div className="max-w-3xl mx-auto">
-              <p className="text-gray-200">Your story content here...</p>
+          <div className="container mx-auto px-6">
+            <div className="flex items-center justify-between max-w-7xl mx-auto">
+              <div className="space-y-6 max-w-2xl">
+                <div className="space-y-2">
+                  <h2 className="text-yellow-300 text-4xl mb-2">1</h2>
+                  <h3 className="text-white text-4xl font-bold">My Story.</h3>
+                </div>
+                
+                <div className="text-white space-y-6 text-base">
+                  <p>
+                    Born in the Dominican Republic and raised in New York City, I&apos;m a full-stack engineer and a Fast Track B.S./M.S. Computer Science and Data Science student at St. John&apos;s University, where I serve as President of the STJ ACM Student Chapter. 
+                    Through internships at <a 
+                      href="https://www.ey.com/en_us" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                    >Ernst & Young (EY)</a> and <a 
+                      href="https://www.headstarter.co" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                    >Headstarter</a>, I&apos;ve honed my skills in building impactful solutions and bridging technical expertise with business acumen.
+                  </p>
+                  <p>
+                    Outside of work and academics, I enjoy traveling, playing and watching sports, reading, and exploring video games. 
+                    Grounded in family, faith in Jesus Christ, and community, I&apos;m passionate about leveraging technology to drive meaningful change.
+                  </p>
+                </div>
+              </div>
+
+              <div className="relative w-[500px] h-[500px] rounded-[40%] overflow-hidden">
+                <Image
+                  src="/tsy_rock.jpeg"
+                  alt="Tomas on a rock in Central Park"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </section>
