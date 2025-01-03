@@ -9,7 +9,7 @@ export default function ProfileImage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoaded(true);
-    }, 1200); // Slightly delayed after the loading screen
+    }, 1200); // Slightly delayed after the loading screen to fade in after the screen loads
 
     return () => clearTimeout(timer);
   }, []);

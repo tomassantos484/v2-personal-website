@@ -1,9 +1,13 @@
+// Importing Components
+
 import ScrollBackground from './components/ScrollBackground';
 import Link from 'next/link';
 import NavItem from './components/NavItem';
 import ProfileImage from './components/ProfileImage';
 import LoadingScreen from './components/LoadingScreen';
-import Image from 'next/image';
+import StoryImage from './components/StoryImage';
+import ProjectCard from './components/ProjectCard';
+import { default as LinkedText } from './components/LinkedText';
 
 export default function Home() {
   return (
@@ -20,7 +24,7 @@ export default function Home() {
               <div>
                 <h2 className="text-yellow-300 text-2xl mb-2">Welcome! I&apos;m</h2>
                 <h1 className="text-white text-5xl font-bold">
-                  Tomas Santos Yciano.
+                  Tomas J. Santos Yciano.
                 </h1>
               </div>
 
@@ -129,35 +133,94 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="relative w-[500px] h-[500px] rounded-[40%] overflow-hidden">
-                <Image
-                  src="/tsy_rock.jpeg"
-                  alt="Tomas on a rock in Central Park"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Skills Section */}
-        <section id="skills" className="py-20 bg-transparent">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-white">Skills</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {/* Add your skills items here */}
+              <StoryImage />
             </div>
           </div>
         </section>
 
         {/* Projects Section */}
         <section id="projects" className="py-20 bg-transparent">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-white">Projects</h2>
+          <div className="container mx-auto px-6">
+            <div className="space-y-2 mb-12">
+              <h2 className="text-yellow-300 text-4xl mb-2">2</h2>
+              <h3 className="text-white text-4xl font-bold">Projects.</h3>
+            </div>
+
+            {/* Project Cards Row 1*/}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Add your project cards here */}
+              <ProjectCard
+                title="Codetionary Bot"
+                description="A Discord bot that helps Computer Science students succeed by generating personalized learning roadmaps, providing interactive tutorials, and creating custom code examples in their preferred programming language. Winner of the STJ ACM x Headstarter AI Hackathon 2024."
+                technologies="Python | Discord API | MythoMist 7B LLM"
+                link="https://github.com/tomassantos484/codetionary-ai-hackathon"
+                borderColor="border-white/30"
+              />
+              <ProjectCard
+                title="ConagraGPT"
+                description={
+                  <div>
+                    A <LinkedText href="https://chatgpt.com/g/g-BAB9OZkz2-conagragpt">
+                      custom GPT solution
+                    </LinkedText> developed for Conagra Brands to revolutionize market research in the food industry. Leverages web-scraped data and AI to identify food trends, analyze nutritional needs, and discover market gaps. Won 3rd Place in FBLA&apos;s National Technology & Computer Science Case Competition 2024.
+                  </div>
+                }
+                technologies="OpenAI GPT-4o | Apify Web Scraping | Custom Knowledge Base"
+                link="https://github.com/tomassantos484/ConagraGPT"
+                borderColor="border-white/30"
+              />
+              <ProjectCard
+                title="Project 3"
+                description="enter desc. here.."
+                technologies="enter tech stack here.."
+                link=""
+                borderColor="border-white/30"
+              />
+
+              {/* Project Cards Row 2*/}
+              <ProjectCard
+                title="Project 4"
+                description="enter desc. here.."
+                technologies="enter tech stack here.."
+                link=""
+                borderColor="border-white/40"
+              />
+              <ProjectCard
+                title="Project 5"
+                description="enter desc. here.."
+                technologies="enter tech stack here.."
+                link=""
+                borderColor="border-white/40"
+              />
+              <ProjectCard
+                title="Project 6"
+                description="enter desc. here.."
+                technologies="enter tech stack here.."
+                link=""
+                borderColor="border-white/40"
+              />
+
+              {/* Project Cards Row 3*/}
+              <ProjectCard
+                title="Project 7"
+                description="enter desc. here.."
+                technologies="enter tech stack here.."
+                link=""
+                borderColor="border-white/50"
+              />
+              <ProjectCard
+                title="Project 8"
+                description="enter desc. here.."
+                technologies="enter tech stack here.."
+                link=""
+                borderColor="border-white/50"
+              />
+              <ProjectCard
+                title="View More ⇒"
+                description="Check out more of my projects on GitHub"
+                technologies=""
+                link="https://github.com/tomassantos484"
+                borderColor="border-white/50"
+              />
             </div>
           </div>
         </section>
