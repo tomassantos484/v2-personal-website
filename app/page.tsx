@@ -164,54 +164,54 @@ export default function Home() {
                     </LinkedText> developed for Conagra Brands to revolutionize market research in the food industry. Leverages web-scraped data and AI to identify food trends, analyze nutritional needs, and discover market gaps. Won 3rd Place in FBLA&apos;s National Technology & Computer Science Case Competition 2024.
                   </div>
                 }
-                technologies="OpenAI GPT-4o | Apify Web Scraping | Custom Knowledge Base"
+                technologies="OpenAI GPT-4o | Apify Web Scraping"
                 link="https://github.com/tomassantos484/ConagraGPT"
                 borderColor="border-white/30"
               />
               <ProjectCard
-                title="Project 3"
-                description="enter desc. here.."
-                technologies="enter tech stack here.."
-                link=""
+                title="VCRTS"
+                description="A distributed cloud computing system that leverages parked vehicles' computational resources to create a static cloud environment. Features real-time job scheduling, resource allocation, and a comprehensive GUI for both clients and administrators. Capstone project for Software Engineering (CUS 1166), built with a team of 4 developers."
+                technologies="Java | Java Swing | MySQL"
+                link="https://github.com/Alegacki21/VCRTS-SWE-Project"
                 borderColor="border-white/30"
               />
 
               {/* Project Cards Row 2*/}
               <ProjectCard
-                title="Project 4"
-                description="enter desc. here.."
-                technologies="enter tech stack here.."
-                link=""
+                title="SJU UIS DBMS"
+                description="A graduate-level database management system that replicates St. John's University's Information System (UIS). Features normalized database design, robust student/faculty management, and dynamic enrollment tracking. Built for the graduate-level Database Management Systems (CUS 510) course."
+                technologies="Python Flask | SQLAlchemy | MySQL | Railway"
+                link="https://github.com/tomassantos484/SJU-UIS-DBMS-Project"
                 borderColor="border-white/40"
               />
               <ProjectCard
-                title="Project 5"
-                description="enter desc. here.."
-                technologies="enter tech stack here.."
-                link=""
+                title="Baseball Buddy"
+                description="A feature-rich Discord bot serving 1000+ users across multiple servers. Leverages MLB data, AI, and GIF APIs to provide player statistics, baseball fun facts, and interactive entertainment. Originally conceived as a Twitter bot, pivoted to Discord for better API accessibility and user engagement."
+                technologies="Python | Discord API | MythoMist 7B LLM"
+                link="https://github.com/tomassantos484/Baseball-Buddy"
                 borderColor="border-white/40"
               />
               <ProjectCard
-                title="Project 6"
-                description="enter desc. here.."
-                technologies="enter tech stack here.."
-                link=""
+                title="PantryPulse"
+                description="A modern web application that helps users efficiently track and manage their pantry inventory. Features real-time updates and cloud synchronization for seamless inventory management across devices."
+                technologies=" TypeScript | React | Next.js | Firebase | Vercel"
+                link="https://github.com/tomassantos484/Pantry-Pulse"
                 borderColor="border-white/40"
               />
 
               {/* Project Cards Row 3*/}
               <ProjectCard
-                title="Project 7"
-                description="enter desc. here.."
-                technologies="enter tech stack here.."
-                link=""
+                title="V2 Personal Website"
+                description="This website! The modern and responsive successor to my previous website, built with React, NextJS, Tailwind CSS, and TypeScript. Features a clean and intuitive design, with a focus on showcasing my journey as a full-stack engineer."
+                technologies="TypeScript | React | Next.js | Tailwind CSS"
+                link="https://github.com/tomassantos484/v2-personal-website"
                 borderColor="border-white/50"
               />
               <ProjectCard
-                title="Project 8"
-                description="enter desc. here.."
-                technologies="enter tech stack here.."
-                link=""
+                title="V1 Personal Website"
+                description="My first personal portfolio site, created using an HTML5Up template. A simple yet effective showcase of my early web development skills, demonstrating proficiency in core web technologies while maintaining a professional and user-friendly interface."
+                technologies="HTML/CSS | SASS | JavaScript"
+                link="https://github.com/tomassantos484/tomassantos484.github.io"
                 borderColor="border-white/50"
               />
               <ProjectCard

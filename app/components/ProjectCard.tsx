@@ -37,7 +37,7 @@ export default function ProjectCard({ title, description, technologies, link, bo
   return (
     <div
       ref={cardRef}
-      className={`border-2 p-8 h-full transition-all duration-700 ease-in-out transform
+      className={`border-2 p-8 h-full transition-all duration-700 ease-in-out transform flex flex-col
         ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}
         ${isHovered ? 'border-yellow-300' : borderColor}`}
       onMouseEnter={() => setIsHovered(true)}
@@ -59,8 +59,8 @@ export default function ProjectCard({ title, description, technologies, link, bo
           {title}
         </h3>
       )}
-      <div className="text-white text-sm mb-6">{description}</div>
-      <p className="text-white text-xs font-mono">{technologies}</p>
+      <div className="text-white text-sm mb-6 flex-grow">{description}</div>
+      <p className="text-white text-xs font-mono mt-auto">{technologies}</p>
     </div>
   );
 } 
