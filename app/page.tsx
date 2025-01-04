@@ -8,6 +8,7 @@ import LoadingScreen from './components/LoadingScreen';
 import StoryImage from './components/StoryImage';
 import ProjectCard from './components/ProjectCard';
 import { default as LinkedText } from './components/LinkedText';
+import ExperienceCard from './components/ExperienceCard';
 
 export default function Home() {
   return (
@@ -227,10 +228,42 @@ export default function Home() {
 
         {/* Experience Section */}
         <section id="experience" className="py-20 bg-transparent">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-white">Experience</h2>
-            <div className="max-w-3xl mx-auto">
-              {/* Add your experience timeline here */}
+          <div className="container mx-auto px-6">
+            <div className="space-y-2 mb-12">
+              <h2 className="text-yellow-300 text-4xl mb-2">3</h2>
+              <h3 className="text-white text-4xl font-bold">Experience.</h3>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-8">
+              <ExperienceCard
+                company="Ernst & Young, LLP (EY)"
+                role="Launch National Technology Intern"
+                duration="June 2024 - August 2024"
+                description={[
+                  "Completed rotations in AI & Data and Cybersecurity with Fortune 500 clients.",
+                  "Created OCM plan for pharmaceutical client to drive AI-powered data marketplace adoption.",
+                  "Supported cybersecurity alliance initiatives through strategic presentations.",
+                  "Earned AI Engineering Bronze Badge - Prompt Engineering, LLMs, and Responsible AI.",
+                  "Secured return offer for Summer 2025 Launch National Technology Consulting position."
+                ]}
+                link="https://www.ey.com/en_us"
+                borderColor="border-white/40"
+              />
+              
+              <ExperienceCard
+                company="Headstarter"
+                role="Software Engineer Fellow"
+                duration="August 2024"
+                description={[
+                  "Built multiple AI-powered projects during the SWE Fellowship, enhancing technical and presentation skills.",
+                  "Transformed the Codetionary Discord Bot into a full-stack web platform using Next.js and React.",
+                  "Collaborated with software engineers and fellows to expand the hackathon-winning project's capabilities.",
+                  "Gained hands-on experience with modern web development practices and AI integration.",
+                  "Expanded professional network through active participation in the Headstarter community."
+                ]}
+                link="https://www.headstarter.co"
+                borderColor="border-white/50"
+              />
             </div>
           </div>
         </section>
@@ -241,6 +274,16 @@ export default function Home() {
             <h2 className="text-3xl font-bold mb-8 text-center text-white">Education</h2>
             <div className="max-w-3xl mx-auto">
               {/* Add your education details here */}
+            </div>
+          </div>
+        </section>
+
+        {/* Awards Section */}
+        <section id="awards" className="py-20 bg-transparent">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8 text-center text-white">Awards</h2>
+            <div className="max-w-3xl mx-auto">
+              {/* Add your awards details here */}
             </div>
           </div>
         </section>
