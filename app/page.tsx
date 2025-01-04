@@ -9,6 +9,9 @@ import StoryImage from './components/StoryImage';
 import ProjectCard from './components/ProjectCard';
 import { default as LinkedText } from './components/LinkedText';
 import ExperienceCard from './components/ExperienceCard';
+import EducationCard from './components/EducationCard';
+import RelevantCoursework from './components/RelevantCoursework';
+
 
 export default function Home() {
   return (
@@ -92,8 +95,8 @@ export default function Home() {
                     className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
                   >
                     RESUME
-                  </a>
-                </div>
+          </a>
+        </div>
               </div>
             </div>
 
@@ -117,13 +120,13 @@ export default function Home() {
                     Born in the Dominican Republic and raised in New York City, I&apos;m a full-stack engineer and a Fast Track B.S./M.S. Computer Science and Data Science student at St. John&apos;s University, where I serve as President of the STJ ACM Student Chapter. 
                     Through internships at <a 
                       href="https://www.ey.com/en_us" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
+          target="_blank"
+          rel="noopener noreferrer"
                       className="text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
                     >Ernst & Young (EY)</a> and <a 
                       href="https://www.headstarter.co" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
+          target="_blank"
+          rel="noopener noreferrer"
                       className="text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
                     >Headstarter</a>, I&apos;ve honed my skills in building impactful solutions and bridging technical expertise with business acumen.
                   </p>
@@ -270,11 +273,29 @@ export default function Home() {
 
         {/* Education Section */}
         <section id="education" className="py-20 bg-transparent">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-white">Education</h2>
-            <div className="max-w-3xl mx-auto">
-              {/* Add your education details here */}
+          <div className="container mx-auto px-6">
+            <div className="space-y-2 mb-12">
+              <h2 className="text-yellow-300 text-4xl mb-2">4</h2>
+              <h3 className="text-white text-4xl font-bold">Education.</h3>
             </div>
+            
+            <div className="grid grid-cols-1 gap-8">
+              <EducationCard
+                school="St. John's University"
+                degree="Fast Track B.S./M.S. in Computer Science/Data Science"
+                duration="Expected Graduation Date: May 2026/May 2027"
+                description={[
+                  "Pursuing accelerated dual degree program in Computer Science and Data Science.",
+                  "President, STJ ACM - Leading weekly technical workshops, managing chapter website, 100+ active members.",
+                  "Co-VP, STJ FBLA - 3rd Place, National Tech & CS Case Competition. Led chapter's university recognition.",
+                  "Network Leader, R.I.S.E. Network - Mentoring freshmen through academic guidance and community engagement.",
+                  "Dean's List Scholar, active in hackathons and professional development initiatives."
+                ]}
+                link="https://www.stjohns.edu"
+                borderColor="border-white/50"
+              />
+            </div>
+            <RelevantCoursework />
           </div>
         </section>
 
@@ -313,8 +334,8 @@ export default function Home() {
           <div className="container mx-auto px-4 text-center text-white">
             <p>© {new Date().getFullYear()} Tomas Santos Yciano. All rights reserved.</p>
           </div>
-        </footer>
-      </div>
+      </footer>
+    </div>
     </>
   );
 }
