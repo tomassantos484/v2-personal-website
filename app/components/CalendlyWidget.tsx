@@ -39,6 +39,15 @@ function CalendlyWidgetInner() {
         .calendly-badge-widget .calendly-badge-content {
           border-radius: 8px !important;
           transition: background-color 0.2s ease !important;
+          font-size: 14px !important;
+          padding: 8px 12px !important;
+        }
+
+        @media (min-width: 768px) {
+          .calendly-badge-widget .calendly-badge-content {
+            font-size: 16px !important;
+            padding: 12px 16px !important;
+          }
         }
 
         .calendly-badge-widget:hover .calendly-badge-content {

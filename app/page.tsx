@@ -75,29 +75,29 @@ export default function Home() {
                   <div className="flex space-x-4 text-lg whitespace-nowrap sm:flex-wrap sm:whitespace-normal">
                     <Link 
                       href="mailto:tomassantos484@gmail.com" 
-                      className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                      className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
                     >
                       EMAIL
                     </Link>
-                    <span>|</span>
+                    <span className="text-white/30">|</span>
                     <Link 
                       href="https://github.com/tomassantos484" 
-                      className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                      className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
                     >
                       GITHUB
                     </Link>
-                    <span>|</span>
+                    <span className="text-white/30">|</span>
                     <Link 
                       href="https://www.linkedin.com/in/tjsy" 
-                      className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                      className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
                     >
                       LINKEDIN
                     </Link>
-                    <span>|</span>
+                    <span className="text-white/30">|</span>
                     <a 
                       href="/TSY_Resume_Sept2024_V5.pdf" 
                       download="Tomas_Santos_Yciano_Resume.pdf"
-                      className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                      className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
                     >
                       RESUME
                     </a>
