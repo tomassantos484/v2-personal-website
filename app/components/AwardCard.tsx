@@ -1,17 +1,18 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import Link from 'next/link';
 
-interface ProjectCardProps {
+interface AwardCardProps {
   title: string;
-  description: string | React.ReactNode;
-  technologies: string;
-  link: string;
+  event: string;
+  date: string;
+  location: string;
+  description: string[];
+  category: string;
   borderColor: string;
 }
 
-export default function ProjectCard({ title, description, technologies, link, borderColor }: ProjectCardProps) {
+export default function AwardCard({ title, event, date, location, description, category, borderColor }: AwardCardProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -39,31 +40,27 @@ export default function ProjectCard({ title, description, technologies, link, bo
       ref={cardRef}
       className={`border-2 p-8 transition-all duration-700 ease-in-out transform flex flex-col h-full
         ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}
-        ${isHovered ? 'border-yellow-300' : borderColor}
-        group`}
+        ${isHovered ? 'border-yellow-300' : borderColor}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="flex-1">
-        {link ? (
-          <Link 
-            href={link}
-            target="_blank" 
-            rel="noopener noreferrer"
-            className={`text-3xl mb-6 transition-colors duration-200 block
-              ${isHovered ? 'text-yellow-300' : 'text-white'}`}
-          >
-            {title}
-          </Link>
-        ) : (
-          <h3 className={`text-3xl mb-6 transition-colors duration-200 
+        <div className="flex justify-between items-start mb-6">
+          <h3 className={`text-3xl transition-colors duration-200
             ${isHovered ? 'text-yellow-300' : 'text-white'}`}>
             {title}
           </h3>
-        )}
-        <div className="text-white text-sm mb-6">{description}</div>
+          <span className="text-white text-sm">{date}</span>
+        </div>
+        <div className="text-white/70 text-sm mb-4">{event}</div>
+        <div className="text-white/70 text-sm mb-6">{location}</div>
+        <div className="text-white text-sm space-y-4">
+          {description.map((bullet, index) => (
+            <p key={index}>• {bullet}</p>
+          ))}
+        </div>
       </div>
-      <div className="text-white/50 text-xs pt-4 border-t border-white/10">{technologies}</div>
+      <div className="text-white/50 text-xs mt-6 pt-4 border-t border-white/10">{category}</div>
     </div>
   );
 } 

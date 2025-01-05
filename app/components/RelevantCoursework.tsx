@@ -18,13 +18,13 @@ export default function RelevantCoursework() {
             title="Database Management Systems"
             courseCode="CUS 510"
             icon="tabler:database"
-            borderColor="border-white/40"
+            borderColor="border-white/75"
           />
           <CourseCard
             title="Data Visualization Apps"
             courseCode="BUA 610"
             icon="carbon:chart-line"
-            borderColor="border-white/40"
+            borderColor="border-white/75"
           />
         </div>
       </div>
@@ -37,55 +37,55 @@ export default function RelevantCoursework() {
             title="Intro to Data Structures"
             courseCode="CUS 1126"
             icon="carbon:tree-view-alt"
-            borderColor="border-white/30"
+            borderColor="border-white/75"
           />
           <CourseCard
             title="Software Design Methods"
             courseCode="CUS 1156"
             icon="mdi:design"
-            borderColor="border-white/30"
+            borderColor="border-white/75"
           />
           <CourseCard
             title="Computer Architecture"
             courseCode="CUS 1162"
             icon="tabler:cpu"
-            borderColor="border-white/30"
+            borderColor="border-white/75"
           />
           <CourseCard
             title="Operating Systems"
             courseCode="CUS 1163"
             icon="carbon:terminal"
-            borderColor="border-white/30"
+            borderColor="border-white/75"
           />
           <CourseCard
             title="Software Engineering"
             courseCode="CUS 1166"
             icon="carbon:code"
-            borderColor="border-white/30"
+            borderColor="border-white/75"
           />
           <CourseCard
             title="Data Security & Cryptography"
             courseCode="CUS 1185"
             icon="tabler:shield-lock"
-            borderColor="border-white/30"
+            borderColor="border-white/75"
           />
           <CourseCard
             title="Intro to Networks"
             courseCode="NET 1011"
             icon="tabler:network"
-            borderColor="border-white/30"
+            borderColor="border-white/75"
           />
           <CourseCard
             title="Numerical Analysis"
             courseCode="MTH 1015"
             icon="carbon:chart-maximum"
-            borderColor="border-white/30"
+            borderColor="border-white/75"
           />
           <CourseCard
             title="Discrete Mathematics"
             courseCode="MTH 1022"
             icon="carbon:function-math"
-            borderColor="border-white/30"
+            borderColor="border-white/75"
           />
         </div>
       </div>

@@ -11,6 +11,9 @@ import { default as LinkedText } from './components/LinkedText';
 import ExperienceCard from './components/ExperienceCard';
 import EducationCard from './components/EducationCard';
 import RelevantCoursework from './components/RelevantCoursework';
+import AwardCard from './components/AwardCard';
+import ViewMoreCard from './components/ViewMoreCard';
+import GalleryCarousel from './components/GalleryCarousel';
 
 
 export default function Home() {
@@ -157,7 +160,7 @@ export default function Home() {
                 description="A Discord bot that helps Computer Science students succeed by generating personalized learning roadmaps, providing interactive tutorials, and creating custom code examples in their preferred programming language. Winner of the STJ ACM x Headstarter AI Hackathon 2024."
                 technologies="Python | Discord API | MythoMist 7B LLM"
                 link="https://github.com/tomassantos484/codetionary-ai-hackathon"
-                borderColor="border-white/30"
+                borderColor="border-white/20"
               />
               <ProjectCard
                 title="ConagraGPT"
@@ -170,37 +173,37 @@ export default function Home() {
                 }
                 technologies="OpenAI GPT-4o | Apify Web Scraping"
                 link="https://github.com/tomassantos484/ConagraGPT"
-                borderColor="border-white/30"
+                borderColor="border-white/20"
               />
               <ProjectCard
                 title="VCRTS"
                 description="A distributed cloud computing system that leverages parked vehicles' computational resources to create a static cloud environment. Features real-time job scheduling, resource allocation, and a comprehensive GUI for both clients and administrators. Capstone project for Software Engineering (CUS 1166), built with a team of 4 developers."
                 technologies="Java | Java Swing | MySQL"
                 link="https://github.com/Alegacki21/VCRTS-SWE-Project"
-                borderColor="border-white/30"
+                borderColor="border-white/20"
               />
 
               {/* Project Cards Row 2*/}
               <ProjectCard
                 title="SJU UIS DBMS"
                 description="A graduate-level database management system that replicates St. John's University's Information System (UIS). Features normalized database design, robust student/faculty management, and dynamic enrollment tracking. Built for the graduate-level Database Management Systems (CUS 510) course."
-                technologies="Python Flask | SQLAlchemy | MySQL | Railway"
+                technologies="Python Flask | SQLAlchemy | MySQL"
                 link="https://github.com/tomassantos484/SJU-UIS-DBMS-Project"
-                borderColor="border-white/40"
+                borderColor="border-white/30"
               />
               <ProjectCard
                 title="Baseball Buddy"
                 description="A feature-rich Discord bot serving 1000+ users across multiple servers. Leverages MLB data, AI, and GIF APIs to provide player statistics, baseball fun facts, and interactive entertainment. Originally conceived as a Twitter bot, pivoted to Discord for better API accessibility and user engagement."
                 technologies="Python | Discord API | MythoMist 7B LLM"
                 link="https://github.com/tomassantos484/Baseball-Buddy"
-                borderColor="border-white/40"
+                borderColor="border-white/30"
               />
               <ProjectCard
                 title="PantryPulse"
                 description="A modern web application that helps users efficiently track and manage their pantry inventory. Features real-time updates and cloud synchronization for seamless inventory management across devices."
-                technologies=" TypeScript | React | Next.js | Firebase | Vercel"
+                technologies=" TypeScript | React | Next.js | Firebase"
                 link="https://github.com/tomassantos484/Pantry-Pulse"
-                borderColor="border-white/40"
+                borderColor="border-white/30"
               />
 
               {/* Project Cards Row 3*/}
@@ -209,22 +212,16 @@ export default function Home() {
                 description="This website! The modern and responsive successor to my previous website, built with React, NextJS, Tailwind CSS, and TypeScript. Features a clean and intuitive design, with a focus on showcasing my journey as a full-stack engineer."
                 technologies="TypeScript | React | Next.js | Tailwind CSS"
                 link="https://github.com/tomassantos484/v2-personal-website"
-                borderColor="border-white/50"
+                borderColor="border-white/40"
               />
               <ProjectCard
                 title="V1 Personal Website"
                 description="My first personal portfolio site, created using an HTML5Up template. A simple yet effective showcase of my early web development skills, demonstrating proficiency in core web technologies while maintaining a professional and user-friendly interface."
                 technologies="HTML/CSS | SASS | JavaScript"
                 link="https://github.com/tomassantos484/tomassantos484.github.io"
-                borderColor="border-white/50"
+                borderColor="border-white/40"
               />
-              <ProjectCard
-                title="View More ⇒"
-                description="Check out more of my projects on GitHub"
-                technologies=""
-                link="https://github.com/tomassantos484"
-                borderColor="border-white/50"
-              />
+              <ViewMoreCard />
             </div>
           </div>
         </section>
@@ -250,7 +247,7 @@ export default function Home() {
                   "Secured return offer for Summer 2025 Launch National Technology Consulting position."
                 ]}
                 link="https://www.ey.com/en_us"
-                borderColor="border-white/40"
+                borderColor="border-white/50"
               />
               
               <ExperienceCard
@@ -265,7 +262,7 @@ export default function Home() {
                   "Expanded professional network through active participation in the Headstarter community."
                 ]}
                 link="https://www.headstarter.co"
-                borderColor="border-white/50"
+                borderColor="border-white/60"
               />
             </div>
           </div>
@@ -287,12 +284,12 @@ export default function Home() {
                 description={[
                   "Pursuing accelerated dual degree program in Computer Science and Data Science.",
                   "President, STJ ACM - Leading weekly technical workshops, managing chapter website, 100+ active members.",
-                  "Co-VP, STJ FBLA - 3rd Place, National Tech & CS Case Competition. Led chapter's university recognition.",
+                  "Co-VP, STJ FBLA - Largest business career & technical student organization in the world, led chapter's university recognition.",
                   "Network Leader, R.I.S.E. Network - Mentoring freshmen through academic guidance and community engagement.",
                   "Dean's List Scholar, active in hackathons and professional development initiatives."
                 ]}
                 link="https://www.stjohns.edu"
-                borderColor="border-white/50"
+                borderColor="border-white/70"
               />
             </div>
             <RelevantCoursework />
@@ -301,30 +298,146 @@ export default function Home() {
 
         {/* Awards Section */}
         <section id="awards" className="py-20 bg-transparent">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-white">Awards</h2>
-            <div className="max-w-3xl mx-auto">
-              {/* Add your awards details here */}
+          <div className="container mx-auto px-6">
+            <div className="space-y-2 mb-12">
+              <h2 className="text-yellow-300 text-4xl mb-2">5</h2>
+              <h3 className="text-white text-4xl font-bold">Awards.</h3>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <AwardCard
+                title="1st Place Hackathon Winner"
+                event="STJ ACM x Headstarter AI Hackathon"
+                date="March 2024"
+                location="St. John's University - Queens, NY"
+                description={[
+                  "Led team of 4 to develop Codetionary, an AI-powered Discord bot for CS education",
+                  "Implemented LLM integration for personalized learning paths and code generation",
+                  "Presented solution to panel of judges and Headstarter Co-Founder, Faizan Ahmed"
+                ]}
+                category="Artificial Intelligence & Education"
+                borderColor="border-white/80"
+              />
+              
+              <AwardCard
+                title="3rd Place, Technology & CompSci Case Competition"
+                event="2024 FBLA National Leadership Conference"
+                date="June 2024"
+                location="Orlando, FL"
+                description={[
+                  "Developed ConagraGPT, an AI solution for food industry market research",
+                  "Integrated web scraping and GPT-4 for trend analysis and market gap identification",
+                  "Competed against top business students nationwide"
+                ]}
+                category="Technology & Business"
+                borderColor="border-white/80"
+              />
+              
+              <AwardCard
+                title="2nd Place, Computer Applications Objective Test"
+                event="2024 FBLA State Leadership Conference"
+                date="February 2024"
+                location="Kean University, Union, NJ"
+                description={[
+                  "Demonstrated expertise in software applications and computer concepts",
+                  "Competed in timed objective test covering various technical topics",
+                  "Qualified for 2024 FBLA National Leadership Conference in Orlando, FL"
+                ]}
+                category="Technical Knowledge"
+                borderColor="border-white/80"
+              />
             </div>
           </div>
         </section>
 
         {/* Gallery Section */}
-        <section id="gallery" className="py-20 bg-transparent">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-white">Gallery</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {/* Add your gallery images here */}
+        <section id="gallery" className="py-20 bg-transparent mb-24">
+          <div className="container mx-auto px-6">
+            <div className="space-y-2 mb-12">
+              <h2 className="text-yellow-300 text-4xl mb-2">6</h2>
+              <h3 className="text-white text-4xl font-bold">Gallery.</h3>
             </div>
+            
+            <GalleryCarousel />
           </div>
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-20 bg-transparent">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-white">Contact Me</h2>
-            <div className="max-w-md mx-auto">
-              {/* Add your contact form or contact information here */}
+        <section id="contact" className="py-20 bg-transparent mb-24">
+          <div className="container mx-auto px-6">
+            <div className="space-y-2 mb-12">
+              <h2 className="text-yellow-300 text-4xl mb-2">7</h2>
+              <h3 className="text-white text-4xl font-bold">Get In Touch.</h3>
+            </div>
+            
+            <div className="max-w-3xl mb-12">
+              <p className="text-white/80 text-lg leading-relaxed">
+                Let&apos;s connect! Whether you have a project in mind, a question about my work, or just want to say hello, I&apos;m always eager to hear from you. Feel free to reach out through any of my contact details.
+              </p>
+            </div>
+            
+            {/* Contact Section Links */}
+            <div className="space-x-4 text-lg">
+              <Link 
+                href="mailto:tomassantos484@gmail.com"
+                className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+              >
+                EMAIL
+              </Link>
+              <span className="text-white/30">|</span>
+              <Link 
+                href="https://github.com/tomassantos484"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+              >
+                GITHUB
+              </Link>
+              <span className="text-white/30">|</span>
+              <Link 
+                href="https://www.linkedin.com/in/tjsy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+              >
+                LINKEDIN
+              </Link>
+              <span className="text-white/30">|</span>
+              <Link 
+                href="https://x.com/TomasJSantosY"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+              >
+                X/TWITTER
+              </Link>
+              <span className="text-white/30">|</span>
+              <Link 
+                href="https://instagram.com/tomassantos484"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+              >
+                INSTAGRAM
+              </Link>
+              <span className="text-white/30">|</span>
+              <Link 
+                href="https://medium.com/@tomassantos484"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+              >
+                MEDIUM
+              </Link>
+              <span className="text-white/30">|</span>
+              <Link 
+                href="https://calendly.com/tomassantos484"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+              >
+                CALENDLY
+              </Link>
             </div>
           </div>
         </section>
