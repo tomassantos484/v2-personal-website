@@ -1,5 +1,4 @@
 // Importing Components
-
 import ScrollBackground from './components/ScrollBackground';
 import Link from 'next/link';
 import NavItem from './components/NavItem';
@@ -15,7 +14,7 @@ import AwardCard from './components/AwardCard';
 import ViewMoreCard from './components/ViewMoreCard';
 import GalleryCarousel from './components/GalleryCarousel';
 
-
+//Main Page
 export default function Home() {
   return (
     <>
@@ -70,42 +69,44 @@ export default function Home() {
                 />
               </nav>
 
-              {/* Social Links */}
+              {/* Most Important Social Links */}
               <div className="pt-4">
-                <div className="text-white space-x-4 text-xl">
-                  <Link 
-                    href="mailto:tomassantos484@gmail.com" 
-                    className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
-                  >
-                    EMAIL
-                  </Link>
-                  <span>|</span>
-                  <Link 
-                    href="https://github.com/tomassantos484" 
-                    className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
-                  >
-                    GITHUB
-                  </Link>
-                  <span>|</span>
-                  <Link 
-                    href="https://www.linkedin.com/in/tjsy" 
-                    className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
-                  >
-                    LINKEDIN
-                  </Link>
-                  <span>|</span>
-                  <a 
-                    href="/TSY_Resume_Sept2024_V5.pdf" 
-                    download="Tomas_Santos_Yciano_Resume.pdf"
-                    className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
-                  >
-                    RESUME
-          </a>
-        </div>
+                <div className="overflow-x-auto pb-2 -mx-4 px-4 sm:overflow-visible sm:pb-0 sm:mx-0 sm:px-0">
+                  <div className="flex space-x-4 text-lg whitespace-nowrap sm:flex-wrap sm:whitespace-normal">
+                    <Link 
+                      href="mailto:tomassantos484@gmail.com" 
+                      className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                    >
+                      EMAIL
+                    </Link>
+                    <span>|</span>
+                    <Link 
+                      href="https://github.com/tomassantos484" 
+                      className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                    >
+                      GITHUB
+                    </Link>
+                    <span>|</span>
+                    <Link 
+                      href="https://www.linkedin.com/in/tjsy" 
+                      className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                    >
+                      LINKEDIN
+                    </Link>
+                    <span>|</span>
+                    <a 
+                      href="/TSY_Resume_Sept2024_V5.pdf" 
+                      download="Tomas_Santos_Yciano_Resume.pdf"
+                      className="hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                    >
+                      RESUME
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Right Content */}
+            {/* Profile Image */}
             <div className="w-48 sm:w-64 lg:w-auto">
               <ProfileImage />
             </div>
