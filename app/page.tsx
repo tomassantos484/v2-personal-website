@@ -21,16 +21,18 @@ export default function Home() {
     <>
       <LoadingScreen />
       <ScrollBackground />
-      <div className="min-h-screen font-mono relative animate-siteLoad">
+      <div className="min-h-screen font-mono relative animate-siteLoad overflow-x-hidden">
         {/* Hero Section */}
         <section id="hero" className="min-h-screen flex items-center">
-          <div className="container mx-auto px-6 flex justify-between items-center">
+          <div className="container mx-auto px-4 md:px-6 flex flex-col-reverse lg:flex-row justify-between items-center gap-8 lg:gap-0">
             {/* Left Content */}
-            <div className="space-y-8">
+            <div className="space-y-8 w-full lg:w-auto text-center lg:text-left">
+              {/* Section Headers */}
+
               {/* Welcome Text */}
               <div>
-                <h2 className="text-yellow-300 text-2xl mb-2">Welcome! I&apos;m</h2>
-                <h1 className="text-white text-5xl font-bold">
+                <h2 className="text-yellow-300 text-xl md:text-2xl mb-2">Welcome! I&apos;m</h2>
+                <h1 className="text-white text-4xl md:text-5xl font-bold">
                   Tomas J. Santos Yciano.
                 </h1>
               </div>
@@ -103,16 +105,18 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Content - Profile Image */}
-            <ProfileImage />
+            {/* Right Content */}
+            <div className="w-48 sm:w-64 lg:w-auto">
+              <ProfileImage />
+            </div>
           </div>
         </section>
 
         {/* My Story Section */}
         <section id="story" className="py-20 bg-transparent">
-          <div className="container mx-auto px-6">
-            <div className="flex items-center justify-between max-w-7xl mx-auto">
-              <div className="space-y-6 max-w-2xl">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 max-w-7xl mx-auto">
+              <div className="space-y-6 max-w-2xl w-full lg:w-1/2">
                 <div className="space-y-2">
                   <h2 className="text-yellow-300 text-4xl mb-2">1</h2>
                   <h3 className="text-white text-4xl font-bold">My Story.</h3>
@@ -139,22 +143,23 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-
-              <StoryImage />
+              <div className="w-full lg:w-1/2 flex justify-center">
+                <StoryImage />
+              </div>
             </div>
           </div>
         </section>
 
         {/* Projects Section */}
         <section id="projects" className="py-20 bg-transparent">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="space-y-2 mb-12">
               <h2 className="text-yellow-300 text-4xl mb-2">2</h2>
               <h3 className="text-white text-4xl font-bold">Projects.</h3>
             </div>
 
             {/* Project Cards Row 1*/}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
               <ProjectCard
                 title="Codetionary Bot"
                 description="A Discord bot that helps Computer Science students succeed by generating personalized learning roadmaps, providing interactive tutorials, and creating custom code examples in their preferred programming language. Winner of the STJ ACM x Headstarter AI Hackathon 2024."
@@ -228,7 +233,7 @@ export default function Home() {
 
         {/* Experience Section */}
         <section id="experience" className="py-20 bg-transparent">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="space-y-2 mb-12">
               <h2 className="text-yellow-300 text-4xl mb-2">3</h2>
               <h3 className="text-white text-4xl font-bold">Experience.</h3>
@@ -270,7 +275,7 @@ export default function Home() {
 
         {/* Education Section */}
         <section id="education" className="py-20 bg-transparent">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="space-y-2 mb-12">
               <h2 className="text-yellow-300 text-4xl mb-2">4</h2>
               <h3 className="text-white text-4xl font-bold">Education.</h3>
@@ -298,13 +303,13 @@ export default function Home() {
 
         {/* Awards Section */}
         <section id="awards" className="py-20 bg-transparent">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="space-y-2 mb-12">
               <h2 className="text-yellow-300 text-4xl mb-2">5</h2>
               <h3 className="text-white text-4xl font-bold">Awards.</h3>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
               <AwardCard
                 title="1st Place Hackathon Winner"
                 event="STJ ACM x Headstarter AI Hackathon"
@@ -352,7 +357,7 @@ export default function Home() {
 
         {/* Gallery Section */}
         <section id="gallery" className="py-20 bg-transparent mb-24">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="space-y-2 mb-12">
               <h2 className="text-yellow-300 text-4xl mb-2">6</h2>
               <h3 className="text-white text-4xl font-bold">Gallery.</h3>
@@ -364,7 +369,7 @@ export default function Home() {
 
         {/* Contact Section */}
         <section id="contact" className="py-20 bg-transparent mb-24">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="space-y-2 mb-12">
               <h2 className="text-yellow-300 text-4xl mb-2">7</h2>
               <h3 className="text-white text-4xl font-bold">Get In Touch.</h3>
@@ -377,67 +382,69 @@ export default function Home() {
             </div>
             
             {/* Contact Section Links */}
-            <div className="space-x-4 text-lg">
-              <Link 
-                href="mailto:tomassantos484@gmail.com"
-                className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
-              >
-                EMAIL
-              </Link>
-              <span className="text-white/30">|</span>
-              <Link 
-                href="https://github.com/tomassantos484"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
-              >
-                GITHUB
-              </Link>
-              <span className="text-white/30">|</span>
-              <Link 
-                href="https://www.linkedin.com/in/tjsy"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
-              >
-                LINKEDIN
-              </Link>
-              <span className="text-white/30">|</span>
-              <Link 
-                href="https://x.com/TomasJSantosY"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
-              >
-                X/TWITTER
-              </Link>
-              <span className="text-white/30">|</span>
-              <Link 
-                href="https://instagram.com/tomassantos484"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
-              >
-                INSTAGRAM
-              </Link>
-              <span className="text-white/30">|</span>
-              <Link 
-                href="https://medium.com/@tomassantos484"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
-              >
-                MEDIUM
-              </Link>
-              <span className="text-white/30">|</span>
-              <Link 
-                href="https://calendly.com/tomassantos484"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
-              >
-                CALENDLY
-              </Link>
+            <div className="overflow-x-auto pb-2 -mx-4 px-4 sm:overflow-visible sm:pb-0 sm:mx-0 sm:px-0">
+              <div className="flex space-x-4 text-lg whitespace-nowrap sm:flex-wrap sm:whitespace-normal">
+                <Link 
+                  href="mailto:tomassantos484@gmail.com"
+                  className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                >
+                  EMAIL
+                </Link>
+                <span className="text-white/30">|</span>
+                <Link 
+                  href="https://github.com/tomassantos484"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                >
+                  GITHUB
+                </Link>
+                <span className="text-white/30">|</span>
+                <Link 
+                  href="https://www.linkedin.com/in/tjsy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                >
+                  LINKEDIN
+                </Link>
+                <span className="text-white/30">|</span>
+                <Link 
+                  href="https://x.com/TomasJSantosY"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                >
+                  X/TWITTER
+                </Link>
+                <span className="text-white/30">|</span>
+                <Link 
+                  href="https://instagram.com/tomassantos484"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                >
+                  INSTAGRAM
+                </Link>
+                <span className="text-white/30">|</span>
+                <Link 
+                  href="https://medium.com/@tomassantos484"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                >
+                  MEDIUM
+                </Link>
+                <span className="text-white/30">|</span>
+                <Link 
+                  href="https://calendly.com/tomassantos484"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+                >
+                  CALENDLY
+                </Link>
+              </div>
             </div>
           </div>
         </section>

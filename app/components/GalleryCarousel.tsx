@@ -39,6 +39,7 @@ const images: GalleryImage[] = [
 
 export default function GalleryCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => 
@@ -52,66 +53,64 @@ export default function GalleryCarousel() {
     );
   };
 
-  const getImageIndex = (index: number) => {
-    if (index < 0) return images.length - 1;
-    if (index >= images.length) return 0;
-    return index;
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+    
+    if (Math.abs(diff) > 50) { // Minimum swipe distance
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
   };
 
   return (
-    <div className="relative max-w-6xl mx-auto px-12">
-      <div className="flex items-center justify-center gap-4">
-        {/* Previous Image (Blurred) */}
-        <div className="relative w-1/4 aspect-[16/9] opacity-40 transition-all duration-500">
-          <Image
-            src={images[getImageIndex(currentIndex - 1)].src}
-            alt="Previous"
-            fill
-            className="object-cover rounded-lg blur-sm"
-          />
-        </div>
-
+    <div 
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      className="relative max-w-6xl mx-auto px-4 sm:px-12"
+    >
+      <div className="flex items-center justify-center">
         {/* Current Image */}
-        <div className="relative w-1/2 aspect-[16/9] transition-all duration-500">
+        <div className="relative w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] transition-all duration-500">
           <Image
             src={images[currentIndex].src}
             alt={images[currentIndex].alt}
             fill
             className="object-contain rounded-lg shadow-2xl"
+            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 70vw, 800px"
             priority
-          />
-        </div>
-
-        {/* Next Image (Blurred) */}
-        <div className="relative w-1/4 aspect-[16/9] opacity-40 transition-all duration-500">
-          <Image
-            src={images[getImageIndex(currentIndex + 1)].src}
-            alt="Next"
-            fill
-            className="object-cover rounded-lg blur-sm"
           />
         </div>
       </div>
       
-      <div className="mt-8 text-center">
-        <p className="text-white/70 text-lg">{images[currentIndex].caption}</p>
+      <div className="mt-4 sm:mt-8 text-center px-2">
+        <p className="text-white/70 text-sm sm:text-lg">{images[currentIndex].caption}</p>
       </div>
 
-      {/* Navigation Buttons */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-4 rounded-full
-          hover:bg-yellow-300/50 transition-all duration-200 transform hover:scale-110"
-      >
-        ←
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-4 rounded-full
-          hover:bg-yellow-300/50 transition-all duration-200 transform hover:scale-110"
-      >
-        →
-      </button>
+      {/* Navigation Buttons - Hide on very small screens */}
+      <div className="hidden sm:block">
+        <button
+          onClick={prevSlide}
+          className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-4 rounded-full
+            hover:bg-yellow-300/50 transition-all duration-200 transform hover:scale-110"
+        >
+          ←
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-4 rounded-full
+            hover:bg-yellow-300/50 transition-all duration-200 transform hover:scale-110"
+        >
+          →
+        </button>
+      </div>
 
       {/* Dots Navigation */}
       <div className="flex justify-center gap-2 mt-4">

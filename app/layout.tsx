@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import CalendlyWidget from './components/CalendlyWidget';
@@ -19,6 +19,13 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: "Tomas J. Santos Yciano | Full-Stack Engineer",
   description: "Explore the journey of Tomas J. Santos Yciano, a full-stack engineer dedicated to mastering both front-end and back-end development. Discover his passion for technology and commitment to excellence in software engineering.",
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 export default function RootLayout({

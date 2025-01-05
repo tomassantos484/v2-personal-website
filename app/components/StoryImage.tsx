@@ -36,7 +36,7 @@ export default function StoryImage() {
   return (
     <div className="relative" ref={imageRef}>
       <div 
-        className={`w-[500px] h-[500px] relative transition-all duration-1000 transform rounded-[40%] overflow-hidden
+        className={`relative w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] lg:w-[500px] lg:h-[500px] transition-all duration-1000 transform rounded-[40%] overflow-hidden
           ${isLoaded && isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}
       >
         <Image
@@ -44,6 +44,7 @@ export default function StoryImage() {
           alt="Tomas standing on a rock in Central Park"
           fill
           className="object-cover"
+          sizes="(max-width: 640px) 240px, (max-width: 1024px) 320px, 500px"
           priority
         />
       </div>
