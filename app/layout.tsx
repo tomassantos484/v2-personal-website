@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.tomassantosyciano.com",
+    url: "https://www.tjsy.dev",
     siteName: "Tomas J. Santos Yciano",
     title: "Tomas J. Santos Yciano | Full-Stack Engineer",
     description: "Full-stack engineer and Fast Track B.S./M.S. student at St. John's University. Experience with EY and Headstarter. Specializing in AI, web development, and software engineering.",
