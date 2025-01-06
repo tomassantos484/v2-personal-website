@@ -258,7 +258,7 @@ export default function Home() {
               
               <ExperienceCard
                 company="Headstarter"
-                role="Software Engineer Fellow"
+                role="Software Engineer Fellow & Intern"
                 duration="August 2024"
                 description={[
                   "Built multiple AI-powered projects during the SWE Fellowship, enhancing technical and presentation skills.",
@@ -286,7 +286,7 @@ export default function Home() {
               <EducationCard
                 school="St. John's University"
                 degree="Fast Track B.S./M.S. in Computer Science/Data Science"
-                duration="Expected Graduation Date: May 2026/May 2027"
+                duration="May 2026/May 2027"
                 description={[
                   "Pursuing accelerated dual degree program in Computer Science and Data Science.",
                   "President, STJ ACM - Leading weekly technical workshops, managing chapter website, 100+ active members.",
