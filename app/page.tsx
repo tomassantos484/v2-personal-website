@@ -2,7 +2,6 @@
 import ScrollBackground from './components/ScrollBackground';
 import Link from 'next/link';
 import NavItem from './components/NavItem';
-import ProfileImage from './components/ProfileImage';
 import LoadingScreen from './components/LoadingScreen';
 import StoryImage from './components/StoryImage';
 import ProjectCard from './components/ProjectCard';
@@ -13,9 +12,12 @@ import RelevantCoursework from './components/RelevantCoursework';
 import AwardCard from './components/AwardCard';
 import ViewMoreCard from './components/ViewMoreCard';
 import GalleryCarousel from './components/GalleryCarousel';
+import Image from 'next/image';
+import { getHeroImage, getResume } from '@/lib/contentful';
+import ResumeLink from './components/ResumeLink';
 
 //Main Page
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <LoadingScreen />
@@ -94,13 +96,7 @@ export default function Home() {
                       LINKEDIN
                     </Link>
                     <span className="text-white/30">|</span>
-                    <a 
-                      href="/TSY_Resume_Sept2024_V5.pdf" 
-                      download="Tomas_Santos_Yciano_Resume.pdf"
-                      className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
-                    >
-                      RESUME
-                    </a>
+                    <ResumeLink resumeUrl={await getResume()} />
                   </div>
                 </div>
               </div>
@@ -108,7 +104,18 @@ export default function Home() {
 
             {/* Profile Image */}
             <div className="w-48 sm:w-64 lg:w-auto">
-              <ProfileImage />
+              {(await getHeroImage()) && (
+                <div className="relative w-[200px] h-[240px] sm:w-[280px] sm:h-[320px] lg:w-[500px] lg:h-[600px] opacity-0 animate-imageAppear transition-opacity duration-500 hover:opacity-80">
+                  <Image
+                    src={await getHeroImage() || ''}
+                    alt="Tomas' Headshot"
+                    fill
+                    priority
+                    className="object-contain"
+                    sizes="(max-width: 640px) 200px, (max-width: 1024px) 280px, 500px"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </section>
