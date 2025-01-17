@@ -479,7 +479,7 @@ export default async function Home() {
         {/* Footer */}
         <footer className="py-6 bg-transparent border-t border-white/10">
           <div className="container mx-auto px-4 text-center text-white">
-            <p>© {new Date().getFullYear()} Tomas Santos Yciano. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Tomas J. Santos Yciano. All rights reserved.</p>
           </div>
         </footer>
       </div>
