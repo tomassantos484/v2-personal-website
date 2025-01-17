@@ -15,6 +15,7 @@ import GalleryCarousel from './components/GalleryCarousel';
 import Image from 'next/image';
 import { getHeroImage, getResume } from '@/lib/contentful';
 import ResumeLink from './components/ResumeLink';
+import ScrollFadeIn from './components/ScrollFadeIn';
 
 //Main Page
 export default async function Home() {
@@ -457,13 +458,31 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* Bottom Message */}
+        <ScrollFadeIn>
+          <div className="container mx-auto px-4 text-center text-white py-12">
+            <p className="text-lg">
+              So you&apos;ve reached the bottom of the ocean! Thank you for visiting my website.
+              I left a surprise for you{' '}
+              <Link
+                href="https://bit.ly/4hmiWUR"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-yellow-300 transition-colors border-b-2 border-yellow-300 pb-0.5 hover:border-opacity-100 border-opacity-0 transition-all duration-200"
+              >
+                here!
+              </Link>
+            </p>
+          </div>
+        </ScrollFadeIn>
+
         {/* Footer */}
         <footer className="py-6 bg-transparent border-t border-white/10">
           <div className="container mx-auto px-4 text-center text-white">
             <p>© {new Date().getFullYear()} Tomas Santos Yciano. All rights reserved.</p>
           </div>
-      </footer>
-    </div>
-    </>
-  );
+        </footer>
+      </div>
+      </>
+    );
 }
