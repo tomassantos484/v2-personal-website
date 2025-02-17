@@ -170,6 +170,13 @@ export default async function Home() {
             {/* Project Cards Row 1*/}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
               <ProjectCard
+                title="StockFinder"
+                description="A real-time inventory tracking system built at DeveloperWeek 2025 Hackathon. Helps users find in-stock products at nearby stores using geolocation and live inventory data. Features an intuitive interface for quick product discovery and store information."
+                technologies="TypeScript | React | NextJS | Fastify | Clerk"
+                link="https://github.com/tomassantos484/stockFinder"
+                borderColor="border-white/20"
+              />
+              <ProjectCard
                 title="Codetionary Bot"
                 description="A Discord bot that helps Computer Science students succeed by generating personalized learning roadmaps, providing interactive tutorials, and creating custom code examples in their preferred programming language. Winner of the STJ ACM x Headstarter AI Hackathon 2024."
                 technologies="Python | Discord API | MythoMist 7B LLM"
@@ -189,15 +196,15 @@ export default async function Home() {
                 link="https://github.com/tomassantos484/ConagraGPT"
                 borderColor="border-white/20"
               />
+
+              {/* Project Cards Row 2*/}
               <ProjectCard
                 title="VCRTS"
                 description="A distributed cloud computing system that leverages parked vehicles' computational resources to create a static cloud environment. Features real-time job scheduling, resource allocation, and a comprehensive GUI for both clients and administrators. Capstone project for Software Engineering (CUS 1166), built with a team of 4 developers."
                 technologies="Java | Java Swing | MySQL"
                 link="https://github.com/Alegacki21/VCRTS-SWE-Project"
-                borderColor="border-white/20"
+                borderColor="border-white/30"
               />
-
-              {/* Project Cards Row 2*/}
               <ProjectCard
                 title="SJU UIS DBMS"
                 description="A graduate-level database management system that replicates St. John's University's Information System (UIS). Features normalized database design, robust student/faculty management, and dynamic enrollment tracking. Built for the graduate-level Database Management Systems (CUS 510) course."
@@ -212,27 +219,20 @@ export default async function Home() {
                 link="https://github.com/tomassantos484/Baseball-Buddy"
                 borderColor="border-white/30"
               />
-              <ProjectCard
-                title="PantryPulse"
-                description="A modern web application that helps users efficiently track and manage their pantry inventory. Features real-time updates and cloud synchronization for seamless inventory management across devices."
-                technologies=" TypeScript | React | Next.js | Firebase"
-                link="https://github.com/tomassantos484/Pantry-Pulse"
-                borderColor="border-white/30"
-              />
 
               {/* Project Cards Row 3*/}
               <ProjectCard
-                title="V2 Personal Website"
-                description="This website! The modern and responsive successor to my previous website, built with React, NextJS, Tailwind CSS, and TypeScript. Features a clean and intuitive design, with a focus on showcasing my journey as a full-stack engineer."
-                technologies="TypeScript | React | Next.js | Tailwind CSS"
-                link="https://github.com/tomassantos484/v2-personal-website"
+                title="PantryPulse"
+                description="A modern web application that helps users efficiently track and manage their pantry inventory. Features real-time updates and cloud synchronization for seamless inventory management across devices."
+                technologies=" TypeScript | React | NextJS | Firebase"
+                link="https://github.com/tomassantos484/Pantry-Pulse"
                 borderColor="border-white/40"
               />
               <ProjectCard
-                title="V1 Personal Website"
-                description="My first personal portfolio site, created using an HTML5Up template. A simple yet effective showcase of my early web development skills, demonstrating proficiency in core web technologies while maintaining a professional and user-friendly interface."
-                technologies="HTML/CSS | SASS | JavaScript"
-                link="https://github.com/tomassantos484/tomassantos484.github.io"
+                title="V2 Personal Website"
+                description="This website! The modern and responsive successor to my previous website, built with React, NextJS, Tailwind CSS, and TypeScript. Features a clean and intuitive design, with a focus on showcasing my journey as a full-stack engineer."
+                technologies="TypeScript | React | NextJS | Tailwind CSS"
+                link="https://github.com/tomassantos484/v2-personal-website"
                 borderColor="border-white/40"
               />
               <ViewMoreCard />

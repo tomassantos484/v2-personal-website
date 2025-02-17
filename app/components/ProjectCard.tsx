@@ -63,7 +63,7 @@ export default function ProjectCard({ title, description, technologies, link, bo
         )}
         <div className="text-white text-sm mb-6">{description}</div>
       </div>
-      <div className="text-white/50 text-xs pt-4 border-t border-white/10">{technologies}</div>
+      <div className="text-white/50 text-[10px] pt-4 border-t border-white/10 whitespace-nowrap overflow-hidden text-ellipsis">{technologies}</div>
     </div>
   );
 } 
