@@ -121,12 +121,16 @@ export default function RootLayout({
         />
         <StructuredData />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased ${jetbrainsMono.className}`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased ${jetbrainsMono.className}`} suppressHydrationWarning>
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWRP4DR9" height="0" width="0" style="display: none; visibility: hidden;" />`,
+          }}
+        />
         <CalendlyWidget />
+        {children}
         <Analytics />
+        <StructuredData />
       </body>
     </html>
   );

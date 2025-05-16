@@ -13,12 +13,16 @@ import AwardCard from './components/AwardCard';
 import ViewMoreCard from './components/ViewMoreCard';
 import GalleryCarousel from './components/GalleryCarousel';
 import Image from 'next/image';
-import { getHeroImage, getResume } from '@/lib/contentful';
+import { getHeroImage, getResume, getProjects } from '@/lib/contentful';
 import ResumeLink from './components/ResumeLink';
 import ScrollFadeIn from './components/ScrollFadeIn';
 
 //Main Page
 export default async function Home() {
+  const heroImage = await getHeroImage();
+  const resumeLink = await getResume();
+  const projects = await getProjects();
+  
   return (
     <>
       <LoadingScreen />
@@ -97,7 +101,7 @@ export default async function Home() {
                       LINKEDIN
                     </Link>
                     <span className="text-white/30">|</span>
-                    <ResumeLink resumeUrl={await getResume()} />
+                    <ResumeLink resumeUrl={resumeLink} />
                   </div>
                 </div>
               </div>
@@ -105,10 +109,10 @@ export default async function Home() {
 
             {/* Profile Image */}
             <div className="w-48 sm:w-64 lg:w-auto">
-              {(await getHeroImage()) && (
+              {heroImage && (
                 <div className="relative w-[200px] h-[240px] sm:w-[280px] sm:h-[320px] lg:w-[500px] lg:h-[600px] opacity-0 animate-imageAppear transition-opacity duration-500 hover:opacity-80">
                   <Image
-                    src={await getHeroImage() || ''}
+                    src={heroImage || ''}
                     alt="Tomas' Headshot"
                     fill
                     priority
@@ -165,77 +169,104 @@ export default async function Home() {
             <div className="space-y-2 mb-12">
               <h2 className="text-yellow-300 text-4xl mb-2">2</h2>
               <h3 className="text-white text-4xl font-bold">Projects.</h3>
+              <p className="text-white/70 mt-2">
+                Showcasing my top projects. <Link href="/projects" className="text-yellow-300 hover:underline">View all projects →</Link>
+              </p>
             </div>
 
-            {/* Project Cards Row 1*/}
+            {/* Project Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-              <ProjectCard
-                title="StockFinder"
-                description="A real-time inventory tracking system built at DeveloperWeek 2025 Hackathon. Helps users find in-stock products at nearby stores using geolocation and live inventory data. Features an intuitive interface for quick product discovery and store information."
-                technologies="TypeScript | React | NextJS | Fastify | Clerk"
-                link="https://github.com/tomassantos484/stockFinder"
-                borderColor="border-white/20"
-              />
-              <ProjectCard
-                title="Codetionary Bot"
-                description="A Discord bot that helps Computer Science students succeed by generating personalized learning roadmaps, providing interactive tutorials, and creating custom code examples in their preferred programming language. Winner of the STJ ACM x Headstarter AI Hackathon 2024."
-                technologies="Python | Discord API | MythoMist 7B LLM"
-                link="https://github.com/tomassantos484/codetionary-ai-hackathon"
-                borderColor="border-white/20"
-              />
-              <ProjectCard
-                title="ConagraGPT"
-                description={
-                  <div>
-                    A <LinkedText href="https://chatgpt.com/g/g-BAB9OZkz2-conagragpt">
-                      custom GPT solution
-                    </LinkedText> developed for Conagra Brands to revolutionize market research in the food industry. Leverages web-scraped data and AI to identify food trends, analyze nutritional needs, and discover market gaps. Won 3rd Place in FBLA&apos;s National Technology & Computer Science Case Competition 2024.
-                  </div>
-                }
-                technologies="OpenAI GPT-4o | Apify Web Scraping"
-                link="https://github.com/tomassantos484/ConagraGPT"
-                borderColor="border-white/20"
-              />
+              {projects && projects.length > 0 ? (
+                <>
+                  {projects.map((project, index) => {
+                    // Calculate opacity based on priority (higher priority = less opacity)
+                    const opacityLevel = Math.min(Math.max(project.priority / 10, 0.2), 0.8);
+                    const borderColor = `border-white/${Math.round(opacityLevel * 100)}`;
+                    
+                    return (
+                      <ProjectCard
+                        key={index}
+                        title={project.title}
+                        description={project.description}
+                        technologies={project.technologies}
+                        link={project.link}
+                        borderColor={borderColor}
+                      />
+                    );
+                  })}
+                  <ViewMoreCard useProjectsPage={true} />
+                </>
+              ) : (
+                // Fallback to hardcoded projects if Contentful data is not available
+                <>
+                  <ProjectCard
+                    title="StockFinder"
+                    description="A real-time inventory tracking system built at DeveloperWeek 2025 Hackathon. Helps users find in-stock products at nearby stores using geolocation and live inventory data. Features an intuitive interface for quick product discovery and store information."
+                    technologies="TypeScript | React | NextJS | Fastify | Clerk"
+                    link="https://github.com/tomassantos484/stockFinder"
+                    borderColor="border-white/20"
+                  />
+                  <ProjectCard
+                    title="Codetionary Bot"
+                    description="A Discord bot that helps Computer Science students succeed by generating personalized learning roadmaps, providing interactive tutorials, and creating custom code examples in their preferred programming language. Winner of the STJ ACM x Headstarter AI Hackathon 2024."
+                    technologies="Python | Discord API | MythoMist 7B LLM"
+                    link="https://github.com/tomassantos484/codetionary-ai-hackathon"
+                    borderColor="border-white/20"
+                  />
+                  <ProjectCard
+                    title="ConagraGPT"
+                    description={
+                      <div>
+                        A <LinkedText href="https://chatgpt.com/g/g-BAB9OZkz2-conagragpt">
+                          custom GPT solution
+                        </LinkedText> developed for Conagra Brands to revolutionize market research in the food industry. Leverages web-scraped data and AI to identify food trends, analyze nutritional needs, and discover market gaps. Won 3rd Place in FBLA&apos;s National Technology & Computer Science Case Competition 2024.
+                      </div>
+                    }
+                    technologies="OpenAI GPT-4o | Apify Web Scraping"
+                    link="https://github.com/tomassantos484/ConagraGPT"
+                    borderColor="border-white/20"
+                  />
 
-              {/* Project Cards Row 2*/}
-              <ProjectCard
-                title="VCRTS"
-                description="A distributed cloud computing system that leverages parked vehicles' computational resources to create a static cloud environment. Features real-time job scheduling, resource allocation, and a comprehensive GUI for both clients and administrators. Capstone project for Software Engineering (CUS 1166), built with a team of 4 developers."
-                technologies="Java | Java Swing | MySQL"
-                link="https://github.com/Alegacki21/VCRTS-SWE-Project"
-                borderColor="border-white/30"
-              />
-              <ProjectCard
-                title="SJU UIS DBMS"
-                description="A graduate-level database management system that replicates St. John's University's Information System (UIS). Features normalized database design, robust student/faculty management, and dynamic enrollment tracking. Built for the graduate-level Database Management Systems (CUS 510) course."
-                technologies="Python Flask | SQLAlchemy | MySQL"
-                link="https://github.com/tomassantos484/SJU-UIS-DBMS-Project"
-                borderColor="border-white/30"
-              />
-              <ProjectCard
-                title="Baseball Buddy"
-                description="A feature-rich Discord bot serving 1000+ users across multiple servers. Leverages MLB data, AI, and GIF APIs to provide player statistics, baseball fun facts, and interactive entertainment. Originally conceived as a Twitter bot, pivoted to Discord for better API accessibility and user engagement."
-                technologies="Python | Discord API | MythoMist 7B LLM"
-                link="https://github.com/tomassantos484/Baseball-Buddy"
-                borderColor="border-white/30"
-              />
+                  {/* Project Cards Row 2*/}
+                  <ProjectCard
+                    title="VCRTS"
+                    description="A distributed cloud computing system that leverages parked vehicles' computational resources to create a static cloud environment. Features real-time job scheduling, resource allocation, and a comprehensive GUI for both clients and administrators. Capstone project for Software Engineering (CUS 1166), built with a team of 4 developers."
+                    technologies="Java | Java Swing | MySQL"
+                    link="https://github.com/Alegacki21/VCRTS-SWE-Project"
+                    borderColor="border-white/30"
+                  />
+                  <ProjectCard
+                    title="SJU UIS DBMS"
+                    description="A graduate-level database management system that replicates St. John's University's Information System (UIS). Features normalized database design, robust student/faculty management, and dynamic enrollment tracking. Built for the graduate-level Database Management Systems (CUS 510) course."
+                    technologies="Python Flask | SQLAlchemy | MySQL"
+                    link="https://github.com/tomassantos484/SJU-UIS-DBMS-Project"
+                    borderColor="border-white/30"
+                  />
+                  <ProjectCard
+                    title="Baseball Buddy"
+                    description="A feature-rich Discord bot serving 1000+ users across multiple servers. Leverages MLB data, AI, and GIF APIs to provide player statistics, baseball fun facts, and interactive entertainment. Originally conceived as a Twitter bot, pivoted to Discord for better API accessibility and user engagement."
+                    technologies="Python | Discord API | MythoMist 7B LLM"
+                    link="https://github.com/tomassantos484/Baseball-Buddy"
+                    borderColor="border-white/30"
+                  />
 
-              {/* Project Cards Row 3*/}
-              <ProjectCard
-                title="PantryPulse"
-                description="A modern web application that helps users efficiently track and manage their pantry inventory. Features real-time updates and cloud synchronization for seamless inventory management across devices."
-                technologies=" TypeScript | React | NextJS | Firebase"
-                link="https://github.com/tomassantos484/Pantry-Pulse"
-                borderColor="border-white/40"
-              />
-              <ProjectCard
-                title="V2 Personal Website"
-                description="This website! The modern and responsive successor to my previous website, built with React, NextJS, Tailwind CSS, and TypeScript. Features a clean and intuitive design, with a focus on showcasing my journey as a full-stack engineer."
-                technologies="TypeScript | React | NextJS | Tailwind CSS"
-                link="https://github.com/tomassantos484/v2-personal-website"
-                borderColor="border-white/40"
-              />
-              <ViewMoreCard />
+                  {/* Project Cards Row 3*/}
+                  <ProjectCard
+                    title="PantryPulse"
+                    description="A modern web application that helps users efficiently track and manage their pantry inventory. Features real-time updates and cloud synchronization for seamless inventory management across devices."
+                    technologies=" TypeScript | React | NextJS | Firebase"
+                    link="https://github.com/tomassantos484/Pantry-Pulse"
+                    borderColor="border-white/40"
+                  />
+                  <ProjectCard
+                    title="V2 Personal Website"
+                    description="This website! The modern and responsive successor to my previous website, built with React, NextJS, Tailwind CSS, and TypeScript. Features a clean and intuitive design, with a focus on showcasing my journey as a full-stack engineer."
+                    technologies="TypeScript | React | NextJS | Tailwind CSS"
+                    link="https://github.com/tomassantos484/v2-personal-website"
+                    borderColor="border-white/40"
+                  />
+                </>
+              )}
             </div>
           </div>
         </section>
