@@ -13,7 +13,7 @@ import AwardCard from './components/AwardCard';
 import ViewMoreCard from './components/ViewMoreCard';
 import GalleryCarousel from './components/GalleryCarousel';
 import Image from 'next/image';
-import { getHeroImage, getResume, getProjects } from '@/lib/contentful';
+import { getHeroImage, getResume, getProjects, getExperiences } from '@/lib/contentful';
 import ResumeLink from './components/ResumeLink';
 import ScrollFadeIn from './components/ScrollFadeIn';
 
@@ -22,6 +22,7 @@ export default async function Home() {
   const heroImage = await getHeroImage();
   const resumeLink = await getResume();
   const projects = await getProjects();
+  const experiences = await getExperiences();
   
   return (
     <>
@@ -179,9 +180,10 @@ export default async function Home() {
               {projects && projects.length > 0 ? (
                 <>
                   {projects.map((project, index) => {
-                    // Calculate opacity based on priority (higher priority = less opacity)
-                    const opacityLevel = Math.min(Math.max(project.priority / 10, 0.2), 0.8);
-                    const borderColor = `border-white/${Math.round(opacityLevel * 100)}`;
+                    // Calculate opacity based on priority (higher priority = more visible)
+                    // Map from priority 1-5 to opacity 30-70%
+                    const opacityLevel = 30 + (Math.min(Math.max(project.priority, 1), 5) - 1) * 10;
+                    const borderColor = `border-white/${opacityLevel}`;
                     
                     return (
                       <ProjectCard
@@ -277,38 +279,58 @@ export default async function Home() {
             <div className="space-y-2 mb-12">
               <h2 className="text-yellow-300 text-4xl mb-2">3</h2>
               <h3 className="text-white text-4xl font-bold">Experience.</h3>
+              <p className="text-white/70 mt-2">
+                Showcasing my professional journey. <Link href="/experiences" className="text-yellow-300 hover:underline">View all experiences →</Link>
+              </p>
             </div>
             
             <div className="grid grid-cols-1 gap-8">
-              <ExperienceCard
-                company="Ernst & Young, LLP (EY)"
-                role="Launch National Technology Intern"
-                duration="June 2024 - August 2024"
-                description={[
-                  "Completed rotations in AI & Data and Cybersecurity with Fortune 500 clients.",
-                  "Created OCM plan for pharmaceutical client to drive AI-powered data marketplace adoption.",
-                  "Supported cybersecurity alliance initiatives through strategic presentations.",
-                  "Earned AI Engineering Bronze Badge - Prompt Engineering, LLMs, and Responsible AI.",
-                  "Secured return offer for Summer 2025 Launch National Technology Consulting position."
-                ]}
-                link="https://www.ey.com/en_us"
-                borderColor="border-white/50"
-              />
-              
-              <ExperienceCard
-                company="Headstarter"
-                role="Software Engineer Fellow & Intern"
-                duration="August 2024"
-                description={[
-                  "Built multiple AI-powered projects during the SWE Fellowship, enhancing technical and presentation skills.",
-                  "Transformed the Codetionary Discord Bot into a full-stack web platform using Next.js and React.",
-                  "Collaborated with software engineers and fellows to expand the hackathon-winning project's capabilities.",
-                  "Gained hands-on experience with modern web development practices and AI integration.",
-                  "Expanded professional network through active participation in the Headstarter community."
-                ]}
-                link="https://www.headstarter.co"
-                borderColor="border-white/60"
-              />
+              {experiences && experiences.length > 0 ? (
+                experiences.slice(0, 3).map((experience, index) => (
+                  <ExperienceCard
+                    key={index}
+                    company={experience.companyName}
+                    role={experience.position}
+                    duration={experience.duration}
+                    description={experience.description}
+                    link={`https://www.google.com/search?q=${encodeURIComponent(experience.companyName)}`}
+                    borderColor={`border-white/${30 + (Math.min(Math.max(experience.priority, 1), 5) - 1) * 10}`}
+                  />
+                ))
+              ) : (
+                // Fallback to hardcoded experiences if Contentful data is not available
+                <>
+                  <ExperienceCard
+                    company="Ernst & Young, LLP (EY)"
+                    role="Launch National Technology Intern"
+                    duration="June 2024 - August 2024"
+                    description={[
+                      "Completed rotations in AI & Data and Cybersecurity with Fortune 500 clients.",
+                      "Created OCM plan for pharmaceutical client to drive AI-powered data marketplace adoption.",
+                      "Supported cybersecurity alliance initiatives through strategic presentations.",
+                      "Earned AI Engineering Bronze Badge - Prompt Engineering, LLMs, and Responsible AI.",
+                      "Secured return offer for Summer 2025 Launch National Technology Consulting position."
+                    ]}
+                    link="https://www.ey.com/en_us"
+                    borderColor="border-white/50"
+                  />
+                  
+                  <ExperienceCard
+                    company="Headstarter"
+                    role="Software Engineer Fellow & Intern"
+                    duration="August 2024"
+                    description={[
+                      "Built multiple AI-powered projects during the SWE Fellowship, enhancing technical and presentation skills.",
+                      "Transformed the Codetionary Discord Bot into a full-stack web platform using Next.js and React.",
+                      "Collaborated with software engineers and fellows to expand the hackathon-winning project's capabilities.",
+                      "Gained hands-on experience with modern web development practices and AI integration.",
+                      "Expanded professional network through active participation in the Headstarter community."
+                    ]}
+                    link="https://www.headstarter.co"
+                    borderColor="border-white/60"
+                  />
+                </>
+              )}
             </div>
           </div>
         </section>

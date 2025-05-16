@@ -34,9 +34,10 @@ export default async function ProjectsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {projects && projects.length > 0 ? (
               projects.map((project, index) => {
-                // Calculate opacity based on priority (higher priority = less opacity)
-                const opacityLevel = Math.min(Math.max(project.priority / 10, 0.2), 0.8);
-                const borderColor = `border-white/${Math.round(opacityLevel * 100)}`;
+                // Calculate opacity based on priority (higher priority = more visible)
+                // Map from priority 1-5 to opacity 30-70%
+                const opacityLevel = 30 + (Math.min(Math.max(project.priority, 1), 5) - 1) * 10;
+                const borderColor = `border-white/${opacityLevel}`;
                 
                 return (
                   <ProjectCard
