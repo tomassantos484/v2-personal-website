@@ -286,17 +286,20 @@ export default async function Home() {
             
             <div className="grid grid-cols-1 gap-8">
               {experiences && experiences.length > 0 ? (
-                experiences.slice(0, 3).map((experience, index) => (
-                  <ExperienceCard
-                    key={index}
-                    company={experience.companyName}
-                    role={experience.position}
-                    duration={experience.duration}
-                    description={experience.description}
-                    link={`https://www.google.com/search?q=${encodeURIComponent(experience.companyName)}`}
-                    borderColor={`border-white/${30 + (Math.min(Math.max(experience.priority, 1), 5) - 1) * 10}`}
-                  />
-                ))
+                <>
+                  {experiences.slice(0, 3).map((experience, index) => (
+                    <ExperienceCard
+                      key={index}
+                      company={experience.companyName}
+                      role={experience.position}
+                      duration={experience.duration}
+                      description={experience.description}
+                      link={`https://www.google.com/search?q=${encodeURIComponent(experience.companyName)}`}
+                      borderColor={`border-white/${30 + (Math.min(Math.max(experience.priority, 1), 5) - 1) * 10}`}
+                    />
+                  ))}
+                  <ViewMoreCard useExperiencesPage={true} />
+                </>
               ) : (
                 // Fallback to hardcoded experiences if Contentful data is not available
                 <>
@@ -329,6 +332,7 @@ export default async function Home() {
                     link="https://www.headstarter.co"
                     borderColor="border-white/60"
                   />
+                  <ViewMoreCard useExperiencesPage={true} />
                 </>
               )}
             </div>
