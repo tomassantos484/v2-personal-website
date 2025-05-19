@@ -13,7 +13,7 @@ import AwardCard from './components/AwardCard';
 import ViewMoreCard from './components/ViewMoreCard';
 import GalleryCarousel from './components/GalleryCarousel';
 import Image from 'next/image';
-import { getHeroImage, getResume, getProjects, getExperiences } from '@/lib/contentful';
+import { getHeroImage, getResume, getProjects, getExperiences, getAllAwards } from '@/lib/contentful';
 import ResumeLink from './components/ResumeLink';
 import ScrollFadeIn from './components/ScrollFadeIn';
 
@@ -23,6 +23,7 @@ export default async function Home() {
   const resumeLink = await getResume();
   const projects = await getProjects();
   const experiences = await getExperiences();
+  const awards = await getAllAwards();
   
   return (
     <>
@@ -68,6 +69,12 @@ export default async function Home() {
                   title="EDUCATION"
                   subtitle="Proudly learning and growing at St. John's University."
                   href="#education"
+                />
+
+                <NavItem
+                  title="AWARDS"
+                  subtitle="Recognition for innovation and excellence."
+                  href="#awards"
                 />
 
                 <NavItem
@@ -373,50 +380,40 @@ export default async function Home() {
             <div className="space-y-2 mb-12">
               <h2 className="text-yellow-300 text-4xl mb-2">5</h2>
               <h3 className="text-white text-4xl font-bold">Awards.</h3>
+              <p className="text-white/70 mt-2">
+                Recent recognition and accomplishments. <Link href="/awards" className="text-yellow-300 hover:underline">View all awards →</Link>
+              </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-              <AwardCard
-                title="1st Place Hackathon Winner"
-                event="STJ ACM x Headstarter AI Hackathon"
-                date="March 2024"
-                location="St. John's University - Queens, NY"
-                description={[
-                  "Led team of 4 to develop Codetionary, an AI-powered Discord bot for CS education",
-                  "Implemented LLM integration for personalized learning paths and code generation",
-                  "Presented solution to panel of judges and Headstarter Co-Founder, Faizan Ahmed"
-                ]}
-                category="Artificial Intelligence & Education"
-                borderColor="border-white/80"
-              />
-              
-              <AwardCard
-                title="3rd Place, Technology & CompSci Case Competition"
-                event="2024 FBLA National Leadership Conference"
-                date="June 2024"
-                location="Orlando, FL"
-                description={[
-                  "Developed ConagraGPT, an AI solution for food industry market research",
-                  "Integrated web scraping and GPT-4 for trend analysis and market gap identification",
-                  "Competed against top business students nationwide"
-                ]}
-                category="Technology & Business"
-                borderColor="border-white/80"
-              />
-              
-              <AwardCard
-                title="2nd Place, Computer Applications Objective Test"
-                event="2024 FBLA State Leadership Conference"
-                date="February 2024"
-                location="Kean University, Union, NJ"
-                description={[
-                  "Demonstrated expertise in software applications and computer concepts",
-                  "Competed in timed objective test covering various technical topics",
-                  "Qualified for 2024 FBLA National Leadership Conference in Orlando, FL"
-                ]}
-                category="Technical Knowledge"
-                borderColor="border-white/80"
-              />
+              {awards && awards.length > 0 ? (
+                <>
+                  {awards.slice(0, 3).map((award, index) => {
+                    // Transform description string to array for the AwardCard component
+                    const descriptionArray = award.description
+                      .split('\n')
+                      .filter(item => item.trim().length > 0);
+                    
+                    return (
+                      <AwardCard
+                        key={index}
+                        title={award.award}
+                        event={award.competitionName}
+                        date={award.awardDate}
+                        location={award.location}
+                        description={descriptionArray}
+                        category={award.category}
+                        borderColor="border-white/80"
+                      />
+                    );
+                  })}
+                  <ViewMoreCard link="/awards" />
+                </>
+              ) : (
+                <div className="col-span-full text-center py-16 text-white">
+                  <p>No awards found. Please check back later.</p>
+                </div>
+              )}
             </div>
           </div>
         </section>

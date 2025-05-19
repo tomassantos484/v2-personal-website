@@ -20,6 +20,17 @@ interface ExperienceItem {
   priority: number;
 }
 
+interface AwardItem {
+  title: string;
+  award: string;
+  competitionName: string;
+  location: string;
+  description: string;
+  awardDate: string;
+  awardReceivedDate?: string;
+  category: string;
+}
+
 // Content structure types for rich text content
 interface RichTextContent {
   nodeType: string;
@@ -267,6 +278,145 @@ export const getExperiences = async (limit = 10): Promise<ExperienceItem[] | nul
     
   } catch (error) {
     console.error('Error fetching experiences:', error);
+    return null;
+  }
+};
+
+export const getAllAwards = async (): Promise<AwardItem[] | null> => {
+  try {
+    const client = getClient();
+    if (!client) {
+      console.warn('Contentful is not configured');
+      return null;
+    }
+
+    const response = await client.getEntries({
+      content_type: 'awards',
+      limit: 1000
+    });
+    
+    if (!response.items.length) {
+      console.warn('No awards found in Contentful');
+      return null;
+    }
+    
+    const awards = response.items.map((item) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const fields = item.fields as any;
+      
+      // Extract rich text description if available
+      let description = '';
+      
+      // First, check if we have a rich text field
+      if (fields.awardDescription && fields.awardDescription.content) {
+        try {
+          // Reuse the same extraction function that works for experiences
+          const extractTextFromNode = (node: RichTextContent): string[] => {
+            const texts: string[] = [];
+            
+            // If it's a text node, add its value
+            if (node.nodeType === 'text' && node.value) {
+              return [node.value];
+            }
+            
+            // If it has content, process each child node
+            if (node.content && Array.isArray(node.content)) {
+              // For paragraphs, collect all text and make it one entry
+              if (node.nodeType === 'paragraph') {
+                const paragraphText = node.content
+                  .map(childNode => extractTextFromNode(childNode).join(''))
+                  .join('');
+                
+                if (paragraphText.trim()) {
+                  return [paragraphText];
+                }
+              } 
+              // For unordered lists, process each list item
+              else if (node.nodeType === 'unordered-list' || node.nodeType === 'ordered-list') {
+                node.content.forEach(childNode => {
+                  if (childNode.nodeType === 'list-item' && childNode.content) {
+                    const listItemText = childNode.content
+                      .map(listItemContent => {
+                        if (!listItemContent.content) return '';
+                        return listItemContent.content
+                          .map(textNode => textNode.value || '')
+                          .join('') || '';
+                      })
+                      .join('');
+                    
+                    if (listItemText.trim()) {
+                      texts.push(listItemText);
+                    }
+                  }
+                });
+              } else {
+                // For other node types, process each child separately
+                node.content.forEach(childNode => {
+                  texts.push(...extractTextFromNode(childNode));
+                });
+              }
+            }
+            
+            return texts;
+          };
+          
+          // Process the rich text content
+          const richText = fields.awardDescription as RichTextField;
+          const extractedTexts: string[] = [];
+          
+          richText.content.forEach(block => {
+            extractedTexts.push(...extractTextFromNode(block));
+          });
+          
+          // Join all the extracted texts with newlines
+          description = extractedTexts.join('\n');
+        } catch (err) {
+          console.error('Error parsing award description rich text:', err);
+        }
+      } else if (fields.awardDescription) {
+        // If it's just a plain string
+        description = fields.awardDescription;
+      }
+      
+      // If there's still no description, try a fallback
+      if (!description && fields.description) {
+        description = fields.description;
+      }
+      
+      return {
+        title: fields.title || '',
+        award: fields.award || 'Untitled Award',
+        competitionName: fields.competitionName || 'Untitled Competition',
+        location: fields.location || '',
+        description: description || 'No description available',
+        awardDate: fields.awardDate || '',
+        awardReceivedDate: fields.awardReceivedDate || '',
+        category: fields.category || ''
+      };
+    });
+    
+    // Sort awards by date (recent to oldest) with robust date parsing
+    const sortedAwards = awards.sort((a, b) => {
+      try {
+        // Parse dates or use fallbacks
+        const dateA = a.awardReceivedDate ? new Date(a.awardReceivedDate) : 
+                      a.awardDate ? new Date(a.awardDate) : new Date(0);
+        
+        const dateB = b.awardReceivedDate ? new Date(b.awardReceivedDate) : 
+                      b.awardDate ? new Date(b.awardDate) : new Date(0);
+        
+        // Compare dates (most recent first)
+        return dateB.getTime() - dateA.getTime();
+      } catch (error) {
+        console.error("Error in award sorting:", error);
+        return 0;
+      }
+    });
+    
+    return sortedAwards;
+    
+  } catch (error) {
+    console.error('Error fetching awards:', error);
     return null;
   }
 };
