@@ -5,7 +5,7 @@ import ScrollBackground from '../components/ScrollBackground';
 
 export const metadata = {
   title: 'Awards | Tomas J. Santos Yciano',
-  description: 'Explore my achievements and recognition in technology, software engineering, and competitions.',
+  description: 'Explore my achievements and recognition in technology, software engineering, competitions, and more!',
 };
 
 export default async function AwardsPage() {

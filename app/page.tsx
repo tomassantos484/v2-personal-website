@@ -5,7 +5,6 @@ import NavItem from './components/NavItem';
 import LoadingScreen from './components/LoadingScreen';
 import StoryImage from './components/StoryImage';
 import ProjectCard from './components/ProjectCard';
-import { default as LinkedText } from './components/LinkedText';
 import ExperienceCard from './components/ExperienceCard';
 import EducationCard from './components/EducationCard';
 import RelevantCoursework from './components/RelevantCoursework';
@@ -206,75 +205,9 @@ export default async function Home() {
                   <ViewMoreCard useProjectsPage={true} />
                 </>
               ) : (
-                // Fallback to hardcoded projects if Contentful data is not available
-                <>
-                  <ProjectCard
-                    title="StockFinder"
-                    description="A real-time inventory tracking system built at DeveloperWeek 2025 Hackathon. Helps users find in-stock products at nearby stores using geolocation and live inventory data. Features an intuitive interface for quick product discovery and store information."
-                    technologies="TypeScript | React | NextJS | Fastify | Clerk"
-                    link="https://github.com/tomassantos484/stockFinder"
-                    borderColor="border-white/20"
-                  />
-                  <ProjectCard
-                    title="Codetionary Bot"
-                    description="A Discord bot that helps Computer Science students succeed by generating personalized learning roadmaps, providing interactive tutorials, and creating custom code examples in their preferred programming language. Winner of the STJ ACM x Headstarter AI Hackathon 2024."
-                    technologies="Python | Discord API | MythoMist 7B LLM"
-                    link="https://github.com/tomassantos484/codetionary-ai-hackathon"
-                    borderColor="border-white/20"
-                  />
-                  <ProjectCard
-                    title="ConagraGPT"
-                    description={
-                      <div>
-                        A <LinkedText href="https://chatgpt.com/g/g-BAB9OZkz2-conagragpt">
-                          custom GPT solution
-                        </LinkedText> developed for Conagra Brands to revolutionize market research in the food industry. Leverages web-scraped data and AI to identify food trends, analyze nutritional needs, and discover market gaps. Won 3rd Place in FBLA&apos;s National Technology & Computer Science Case Competition 2024.
-                      </div>
-                    }
-                    technologies="OpenAI GPT-4o | Apify Web Scraping"
-                    link="https://github.com/tomassantos484/ConagraGPT"
-                    borderColor="border-white/20"
-                  />
-
-                  {/* Project Cards Row 2*/}
-                  <ProjectCard
-                    title="VCRTS"
-                    description="A distributed cloud computing system that leverages parked vehicles' computational resources to create a static cloud environment. Features real-time job scheduling, resource allocation, and a comprehensive GUI for both clients and administrators. Capstone project for Software Engineering (CUS 1166), built with a team of 4 developers."
-                    technologies="Java | Java Swing | MySQL"
-                    link="https://github.com/Alegacki21/VCRTS-SWE-Project"
-                    borderColor="border-white/30"
-                  />
-                  <ProjectCard
-                    title="SJU UIS DBMS"
-                    description="A graduate-level database management system that replicates St. John's University's Information System (UIS). Features normalized database design, robust student/faculty management, and dynamic enrollment tracking. Built for the graduate-level Database Management Systems (CUS 510) course."
-                    technologies="Python Flask | SQLAlchemy | MySQL"
-                    link="https://github.com/tomassantos484/SJU-UIS-DBMS-Project"
-                    borderColor="border-white/30"
-                  />
-                  <ProjectCard
-                    title="Baseball Buddy"
-                    description="A feature-rich Discord bot serving 1000+ users across multiple servers. Leverages MLB data, AI, and GIF APIs to provide player statistics, baseball fun facts, and interactive entertainment. Originally conceived as a Twitter bot, pivoted to Discord for better API accessibility and user engagement."
-                    technologies="Python | Discord API | MythoMist 7B LLM"
-                    link="https://github.com/tomassantos484/Baseball-Buddy"
-                    borderColor="border-white/30"
-                  />
-
-                  {/* Project Cards Row 3*/}
-                  <ProjectCard
-                    title="PantryPulse"
-                    description="A modern web application that helps users efficiently track and manage their pantry inventory. Features real-time updates and cloud synchronization for seamless inventory management across devices."
-                    technologies=" TypeScript | React | NextJS | Firebase"
-                    link="https://github.com/tomassantos484/Pantry-Pulse"
-                    borderColor="border-white/40"
-                  />
-                  <ProjectCard
-                    title="V2 Personal Website"
-                    description="This website! The modern and responsive successor to my previous website, built with React, NextJS, Tailwind CSS, and TypeScript. Features a clean and intuitive design, with a focus on showcasing my journey as a full-stack engineer."
-                    technologies="TypeScript | React | NextJS | Tailwind CSS"
-                    link="https://github.com/tomassantos484/v2-personal-website"
-                    borderColor="border-white/40"
-                  />
-                </>
+                <div className="col-span-full text-center py-16 text-white">
+                  <p>No projects found. Please check back later.</p>
+                </div>
               )}
             </div>
           </div>
@@ -308,39 +241,9 @@ export default async function Home() {
                   <ViewMoreCard useExperiencesPage={true} />
                 </>
               ) : (
-                // Fallback to hardcoded experiences if Contentful data is not available
-                <>
-                  <ExperienceCard
-                    company="Ernst & Young, LLP (EY)"
-                    role="Launch National Technology Intern"
-                    duration="June 2024 - August 2024"
-                    description={[
-                      "Completed rotations in AI & Data and Cybersecurity with Fortune 500 clients.",
-                      "Created OCM plan for pharmaceutical client to drive AI-powered data marketplace adoption.",
-                      "Supported cybersecurity alliance initiatives through strategic presentations.",
-                      "Earned AI Engineering Bronze Badge - Prompt Engineering, LLMs, and Responsible AI.",
-                      "Secured return offer for Summer 2025 Launch National Technology Consulting position."
-                    ]}
-                    link="https://www.ey.com/en_us"
-                    borderColor="border-white/50"
-                  />
-                  
-                  <ExperienceCard
-                    company="Headstarter"
-                    role="Software Engineer Fellow & Intern"
-                    duration="August 2024"
-                    description={[
-                      "Built multiple AI-powered projects during the SWE Fellowship, enhancing technical and presentation skills.",
-                      "Transformed the Codetionary Discord Bot into a full-stack web platform using Next.js and React.",
-                      "Collaborated with software engineers and fellows to expand the hackathon-winning project's capabilities.",
-                      "Gained hands-on experience with modern web development practices and AI integration.",
-                      "Expanded professional network through active participation in the Headstarter community."
-                    ]}
-                    link="https://www.headstarter.co"
-                    borderColor="border-white/60"
-                  />
-                  <ViewMoreCard useExperiencesPage={true} />
-                </>
+                <div className="col-span-full text-center py-16 text-white">
+                  <p>No experience entries found. Please check back later.</p>
+                </div>
               )}
             </div>
           </div>

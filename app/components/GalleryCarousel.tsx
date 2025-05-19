@@ -9,7 +9,8 @@ interface GalleryImage {
   alt: string;
 }
 
-const images: GalleryImage[] = [
+// Images for the gallery carousel
+const galleryImages: GalleryImage[] = [
   {
     src: '/ey_pic_1.jpeg',
     caption: 'Me at the EY National Launch Training in Baltimore, MD',
@@ -43,13 +44,13 @@ export default function GalleryCarousel() {
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === galleryImages.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1
     );
   };
 
@@ -80,7 +81,7 @@ export default function GalleryCarousel() {
         {/* Previous Image Preview - Hidden on Mobile */}
         <div className="relative w-1/4 aspect-[16/9] opacity-40 transition-all duration-500 hidden lg:block">
           <Image
-            src={images[(currentIndex - 1 + images.length) % images.length].src}
+            src={galleryImages[(currentIndex - 1 + galleryImages.length) % galleryImages.length].src}
             alt="Previous"
             fill
             className="object-cover rounded-lg blur-[2px]"
@@ -91,8 +92,8 @@ export default function GalleryCarousel() {
         {/* Current Image - Optimized for Mobile */}
         <div className="relative w-full lg:w-1/2 h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] transition-all duration-500">
           <Image
-            src={images[currentIndex].src}
-            alt={images[currentIndex].alt}
+            src={galleryImages[currentIndex].src}
+            alt={galleryImages[currentIndex].alt}
             fill
             className="object-contain rounded-lg shadow-2xl"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 70vw, 800px"
@@ -105,7 +106,7 @@ export default function GalleryCarousel() {
         {/* Next Image Preview - Hidden on Mobile */}
         <div className="relative w-1/4 aspect-[16/9] opacity-40 transition-all duration-500 hidden lg:block">
           <Image
-            src={images[(currentIndex + 1) % images.length].src}
+            src={galleryImages[(currentIndex + 1) % galleryImages.length].src}
             alt="Next"
             fill
             className="object-cover rounded-lg blur-[2px]"
@@ -115,7 +116,7 @@ export default function GalleryCarousel() {
       </div>
       
       <div className="mt-3 sm:mt-6 text-center px-2">
-        <p className="text-white/70 text-sm sm:text-base lg:text-lg">{images[currentIndex].caption}</p>
+        <p className="text-white/70 text-sm sm:text-base lg:text-lg">{galleryImages[currentIndex].caption}</p>
       </div>
 
       {/* Navigation Buttons - Mobile Optimized */}
@@ -138,7 +139,7 @@ export default function GalleryCarousel() {
 
       {/* Dots Navigation - Mobile Friendly */}
       <div className="flex justify-center gap-1 sm:gap-2 mt-2 sm:mt-4">
-        {images.map((_, index) => (
+        {galleryImages.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
