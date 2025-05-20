@@ -4,41 +4,16 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 interface GalleryImage {
-  src: string;
-  caption: string;
-  alt: string;
+  image: string;
+  imageCaption: string;
+  title: string;
 }
 
-// Images for the gallery carousel
-const galleryImages: GalleryImage[] = [
-  {
-    src: '/ey_pic_1.jpeg',
-    caption: 'Me at the EY National Launch Training in Baltimore, MD',
-    alt: 'Tomas at the EY National Launch Training'
-  },
-  {
-    src: '/fbla_nlc_3rd_place.jpeg',
-    caption: 'Me with my 3rd Place trophy at the FBLA NLC in Orlando, FL',
-    alt: 'Tomas with his 3rd place trophy at FBLA NLC'
-  },
-  {
-    src: '/fbla_slc_1.jpeg',
-    caption: 'Me and my team with our trophies at FBLA SLC in Kean University - Union, NJ',
-    alt: 'Tomas and his team with their trophies at FBLA SLC'
-  },
-  {
-    src: '/fbla_slc_2.jpeg',
-    caption: 'Me with my 2nd Place trophy at FBLA SLC in Kean University - Union, NJ',
-    alt: 'Tomas with his 2nd place trophy at FBLA SLC'
-  },
-  {
-    src: '/headstarter_hackathon_winners.jpeg',
-    caption: 'Celebrating our hackathon win with the Headstarter co-founder, Faizan at St. John\'s University',
-    alt: 'Hackathon winning team with Headstarter co-founder'
-  }
-];
+interface GalleryCarouselProps {
+  galleryImages: GalleryImage[];
+}
 
-export default function GalleryCarousel() {
+export default function GalleryCarousel({ galleryImages }: GalleryCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
 
@@ -71,6 +46,10 @@ export default function GalleryCarousel() {
     }
   };
 
+  if (!galleryImages || galleryImages.length === 0) {
+    return <div className="text-white text-center">No images found.</div>;
+  }
+
   return (
     <div 
       onTouchStart={handleTouchStart}
@@ -81,7 +60,7 @@ export default function GalleryCarousel() {
         {/* Previous Image Preview - Hidden on Mobile */}
         <div className="relative w-1/4 aspect-[16/9] opacity-40 transition-all duration-500 hidden lg:block">
           <Image
-            src={galleryImages[(currentIndex - 1 + galleryImages.length) % galleryImages.length].src}
+            src={galleryImages[(currentIndex - 1 + galleryImages.length) % galleryImages.length].image}
             alt="Previous"
             fill
             className="object-cover rounded-lg blur-[2px]"
@@ -92,8 +71,8 @@ export default function GalleryCarousel() {
         {/* Current Image - Optimized for Mobile */}
         <div className="relative w-full lg:w-1/2 h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] transition-all duration-500">
           <Image
-            src={galleryImages[currentIndex].src}
-            alt={galleryImages[currentIndex].alt}
+            src={galleryImages[currentIndex].image}
+            alt={galleryImages[currentIndex].title}
             fill
             className="object-contain rounded-lg shadow-2xl"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 70vw, 800px"
@@ -106,7 +85,7 @@ export default function GalleryCarousel() {
         {/* Next Image Preview - Hidden on Mobile */}
         <div className="relative w-1/4 aspect-[16/9] opacity-40 transition-all duration-500 hidden lg:block">
           <Image
-            src={galleryImages[(currentIndex + 1) % galleryImages.length].src}
+            src={galleryImages[(currentIndex + 1) % galleryImages.length].image}
             alt="Next"
             fill
             className="object-cover rounded-lg blur-[2px]"
@@ -116,7 +95,7 @@ export default function GalleryCarousel() {
       </div>
       
       <div className="mt-3 sm:mt-6 text-center px-2">
-        <p className="text-white/70 text-sm sm:text-base lg:text-lg">{galleryImages[currentIndex].caption}</p>
+        <p className="text-white/70 text-sm sm:text-base lg:text-lg">{galleryImages[currentIndex].imageCaption}</p>
       </div>
 
       {/* Navigation Buttons - Mobile Optimized */}

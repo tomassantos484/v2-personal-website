@@ -31,6 +31,12 @@ interface AwardItem {
   category: string;
 }
 
+interface GalleryItem {
+  title: string;
+  image: string;
+  imageCaption: string;
+}
+
 // Content structure types for rich text content
 interface RichTextContent {
   nodeType: string;
@@ -424,5 +430,40 @@ export const getAllAwards = async (): Promise<AwardItem[] | null> => {
 export const getAllExperiences = async (): Promise<ExperienceItem[] | null> => {
   // Get all experiences (Imagine having 1000 experiences lol)
   return getExperiences(1000);
+};
+
+export const getGalleryImages = async (): Promise<GalleryItem[]> => {
+  try {
+    const client = getClient();
+    if (!client) {
+      console.warn('Contentful is not configured');
+      return [];
+    }
+
+    const response = await client.getEntries({
+      content_type: 'gallery',
+      order: ['fields.title'], // Optional: order by title
+    });
+
+    if (!response.items.length) {
+      console.warn('No gallery images found in Contentful');
+      return [];
+    }
+
+    return response.items.map((item) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const fields = item.fields as any;
+      const imageUrl = fields.image?.fields?.file?.url;
+      return {
+        title: fields.title || '',
+        image: imageUrl ? `https:${imageUrl}` : '',
+        imageCaption: fields.imageCaption || '',
+      };
+    });
+  } catch (error) {
+    console.error('Error fetching gallery images:', error);
+    return [];
+  }
 }; 
+
 

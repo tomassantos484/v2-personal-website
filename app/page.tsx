@@ -12,7 +12,7 @@ import AwardCard from './components/AwardCard';
 import ViewMoreCard from './components/ViewMoreCard';
 import GalleryCarousel from './components/GalleryCarousel';
 import Image from 'next/image';
-import { getHeroImage, getResume, getProjects, getExperiences, getAllAwards } from '@/lib/contentful';
+import { getHeroImage, getResume, getProjects, getExperiences, getAllAwards, getGalleryImages } from '@/lib/contentful';
 import ResumeLink from './components/ResumeLink';
 import ScrollFadeIn from './components/ScrollFadeIn';
 
@@ -23,6 +23,7 @@ export default async function Home() {
   const projects = await getProjects();
   const experiences = await getExperiences();
   const awards = await getAllAwards();
+  const galleryImages = await getGalleryImages();
   
   return (
     <>
@@ -329,7 +330,7 @@ export default async function Home() {
               <h3 className="text-white text-4xl font-bold">Gallery.</h3>
             </div>
             
-            <GalleryCarousel />
+            <GalleryCarousel galleryImages={galleryImages} />
           </div>
         </section>
 
